@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кампус 360 — модули и цены</title>
+<style>
+/* Shared deck styles — M360 layout × Campus 360 palette */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
+
+:root{
+  --acc:#EF5B48;
+  --acc-soft:rgba(239,91,72,.12);
+  --acc-line:rgba(239,91,72,.32);
+  --blue:#1672EA;
+  --blue-soft:rgba(22,114,234,.10);
+  --blue-on:#5AA0FF;
+  --ink:#0B1426;
+  --ink-2:#475569;
+  --ink-3:#94A3B8;
+  --bg:#FFFFFF;
+  --card:#F6F8FB;
+  --card2:#EEF2F7;
+  --line:rgba(11,20,38,.10);
+  --good:#1F8A5B;
+  --gold:#B58A4B;
+  --on-1:#fff;
+  --on-2:rgba(255,255,255,.78);
+  --on-3:rgba(255,255,255,.55);
+  --pad-x:96px;
+  --pad-y:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0B1426;color:var(--ink);font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.deck-nav{
+  position:fixed;z-index:50;left:50%;bottom:22px;transform:translateX(-50%);
+  display:flex;gap:10px;align-items:center;
+  background:rgba(11,20,38,.78);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 12px;
+  color:#fff;font-size:13px;font-weight:600;
+}
+.deck-nav button{
+  appearance:none;border:0;background:rgba(255,255,255,.1);color:#fff;
+  width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;font-weight:700;
+}
+.deck-nav button:hover{background:var(--acc)}
+.deck-nav .idx{min-width:64px;text-align:center;opacity:.85}
+deck-stage, .deck{
+  width:100vw;height:100vh;overflow:hidden;position:relative;
+}
+section.slide{
+  position:absolute;inset:0;width:100%;height:100%;
+  padding:var(--pad-y) var(--pad-x);
+  display:none;flex-direction:column;overflow:hidden;
+  background:var(--bg);
+}
+section.slide.on{display:flex}
+section.slide.dark{background:var(--ink);color:var(--on-1)}
+.dotgrid{
+  position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:radial-gradient(rgba(11,20,38,.18) 1px, transparent 1px);
+  background-size:22px 22px;
+}
+.dark .dotgrid{background-image:radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);opacity:.5}
+.glow{position:absolute;width:55%;height:55%;border-radius:50%;filter:blur(40px);pointer-events:none}
+.meta,.top{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-3);position:relative;z-index:2;
+}
+.dark .meta,.dark .top{color:var(--on-3)}
+.brand-mark{
+  display:inline-flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;
+  text-transform:none;font-size:15px;color:var(--ink);
+}
+.dark .brand-mark{color:#fff}
+.brand-mark .pill360{
+  background:var(--acc);color:#fff;border-radius:999px;padding:4px 10px;font-size:12px;letter-spacing:.04em;
+}
+.kick{font-size:15px;font-weight:700;color:var(--acc);letter-spacing:.02em;margin-bottom:14px}
+.dark .kick{color:#ff8f7f}
+h1{
+  font-size:clamp(36px,4.6vw,64px);line-height:1.05;font-weight:800;letter-spacing:-.03em;
+  max-width:16ch;
+}
+h1 em{font-style:normal;color:var(--acc)}
+.dark h1 em{color:#ff8f7f}
+.lead{margin-top:18px;font-size:clamp(16px,1.35vw,20px);line-height:1.45;color:var(--ink-2);max-width:46ch;font-weight:500}
+.dark .lead{color:var(--on-2)}
+.lead .hi{color:var(--acc);font-weight:700}
+.dark .lead .hi{color:#ffb4a8}
+.cta-chip{
+  display:inline-flex;margin-top:28px;padding:12px 18px;border-radius:999px;
+  background:var(--acc);color:#fff;font-weight:700;font-size:14px;
+}
+.grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;flex:1;align-items:stretch;margin-top:28px;min-height:0;position:relative;z-index:2}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;position:relative;z-index:2}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px;position:relative;z-index:2}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 22px 20px;
+}
+.dark .card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card h3{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.02em}
+.card p,.card li{font-size:14px;line-height:1.45;color:var(--ink-2);font-weight:500}
+.dark .card p,.dark .card li{color:var(--on-2)}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.card li{display:flex;gap:10px}
+.card li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--acc);margin-top:7px;flex:none}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;
+  background:var(--acc-soft);color:var(--acc);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+}
+.fact{background:linear-gradient(160deg,#141f36,#0B1426);color:#fff;border-radius:24px;padding:28px;border:1px solid rgba(255,255,255,.08)}
+.fact b{display:block;font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1;color:#fff}
+.fact .sub{display:block;margin-top:10px;color:var(--on-2);font-size:15px;line-height:1.4;font-weight:500}
+.price{font-size:34px;font-weight:800;letter-spacing:-.03em}
+.price small{font-size:14px;font-weight:600;color:var(--ink-3)}
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--blue-soft);color:var(--blue)}
+.footer-note{margin-top:auto;padding-top:18px;font-size:12px;color:var(--ink-3);position:relative;z-index:2}
+.dark .footer-note{color:var(--on-3)}
+.role-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 8px;position:relative;z-index:2}
+.role-tabs span{
+  padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--ink-2);background:#fff;
+}
+.role-tabs span.on{background:var(--acc);border-color:transparent;color:#fff}
+.table{width:100%;border-collapse:separate;border-spacing:0 8px;margin-top:8px;position:relative;z-index:2}
+.table th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);text-align:left;padding:0 14px 6px;font-weight:700}
+.table td{
+  background:var(--card);padding:14px 16px;font-size:15px;font-weight:600;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.table td:first-child{border-left:1px solid var(--line);border-radius:14px 0 0 14px}
+.table td:last-child{border-right:1px solid var(--line);border-radius:0 14px 14px 0}
+.table .hi{color:var(--acc);font-weight:800}
+.shot{
+  border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#0a1020;
+  min-height:220px;display:flex;align-items:center;justify-content:center;position:relative;
+}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .cap{
+  position:absolute;left:12px;bottom:12px;background:rgba(6,10,20,.75);color:#fff;
+  font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);
+}
+@media (max-width:1100px){
+  :root{--pad-x:28px;--pad-y:28px}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;gap:14px;overflow:auto}
+  h1{font-size:34px}
+}
+
+
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="slide dark on">
+  <div class="glow" style="right:-18%;bottom:-28%;background:radial-gradient(circle,#EF5B48 0%,transparent 55%);opacity:.32"></div>
+  <div class="glow" style="left:-22%;top:-34%;background:radial-gradient(circle,#1672EA 0%,transparent 55%);opacity:.2"></div>
+  <div class="dotgrid"></div>
+  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>01 / 06</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;max-width:920px">
+    <p class="kick">Модули и цены · 2026</p>
+    <h1>Тарифы для школы — <em>честно и прозрачно</em></h1>
+    <p class="lead">Цена за школу по числу учеников, скидка по сети. Базовый продукт уже включает всё для запуска — расширения подключаем по запросу.</p>
+    <div class="cta-chip">от 6 000 ₽ / школа / месяц</div>
+  </div>
+</section>
+
+
+<section class="slide">
+  <div class="dotgrid"></div>
+  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>02 / 06 · База</span></div>
+  <p class="kick" style="margin-top:18px">Что входит</p>
+  <h1>Базовая спецификация — <em>всё для запуска</em></h1>
+  <div class="grid-3">
+    <div class="card">
+      <span class="tag">Тренировки</span>
+      <ul>
+        <li>Журнал и конспекты</li>
+        <li>Посещаемость</li>
+        <li>Опросник самочувствия</li>
+        <li>Календарь занятий</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">Управление</span>
+      <ul>
+        <li>Кабинет руководителя</li>
+        <li>Учётки всех ролей</li>
+        <li>Метрики и должники</li>
+        <li>Сравнение групп</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">Платежи и родители</span>
+      <ul>
+        <li>Кабинет родителя</li>
+        <li>Эквайринг / офлайн-оплаты</li>
+        <li>Тарифы и абонементы</li>
+        <li>Воронка пробных</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="slide">
+  <div class="dotgrid"></div>
+  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>03 / 06 · Расширения</span></div>
+  <p class="kick" style="margin-top:18px">Сверх базовой спецификации</p>
+  <h1>Модули <em>по запросу</em></h1>
+  <div class="grid-4" style="margin-top:28px">
+    <div class="card"><h3>Кабинет франшизы</h3><p>Все школы сети в срезах и сравнении.</p></div>
+    <div class="card"><h3>NPS и отчёты</h3><p>Лояльность родителей и кастомные дашборды.</p></div>
+    <div class="card"><h3>Брендирование</h3><p>Логотип, цвета и иконка клуба в приложении.</p></div>
+    <div class="card"><h3>Переезд с CRM</h3><p>Автоперенос учеников, абонементов и оплат.</p></div>
+    <div class="card"><h3>Датчики</h3><p>Polar, WHOOP, Catapult — в карточке спортсмена.</p></div>
+    <div class="card"><h3>IP-камеры</h3><p>Трансляции для родителей.</p></div>
+    <div class="card"><h3>CV-тесты</h3><p>Нейротесты через камеру смартфона.</p></div>
+    <div class="card"><h3>ИИ-ассистент</h3><p>Конспекты и нагрузка для тренера.</p></div>
+  </div>
+</section>
+
+
+<section class="slide">
+  <div class="dotgrid"></div>
+  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>04 / 06 · Тарифы</span></div>
+  <p class="kick" style="margin-top:18px">Тарифная сетка</p>
+  <h1>Цена за школу — <em>по числу учеников</em></h1>
+  <table class="table">
+    <thead><tr><th>Учеников в школе</th><th>Платёж в месяц</th><th>Ориентир / год</th></tr></thead>
+    <tbody>
+      <tr><td>до 99</td><td class="hi">6 000 ₽</td><td>72 000 ₽</td></tr>
+      <tr><td>100–199</td><td class="hi">10 000 ₽</td><td>120 000 ₽</td></tr>
+      <tr><td>200–299</td><td class="hi">14 000 ₽</td><td>168 000 ₽</td></tr>
+      <tr><td>300–499</td><td class="hi">20 000 ₽</td><td>240 000 ₽</td></tr>
+      <tr><td>500–999</td><td class="hi">30 000 ₽</td><td>360 000 ₽</td></tr>
+      <tr><td>1000+</td><td class="hi">40 000 ₽</td><td>480 000 ₽</td></tr>
+    </tbody>
+  </table>
+  <p class="footer-note">Сеть: сумма по школам. От 20 школ / франшиза — индивидуальный оффер.</p>
+</section>
+
+
+<section class="slide">
+  <div class="dotgrid"></div>
+  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>05 / 06 · Эффект</span></div>
+  <p class="kick" style="margin-top:18px">Что может стать лучше</p>
+  <h1>Не просто окупается — <em>даёт рост</em></h1>
+  <div class="grid-4" style="margin-top:28px">
+    <div class="fact"><b style="font-size:36px;color:#ffb4a8">89%</b><span class="sub">оплаты в срок — напоминания и ссылка</span></div>
+    <div class="fact"><b style="font-size:36px;color:#ffb4a8">+9%</b><span class="sub">средний чек — продления и допродажи</span></div>
+    <div class="fact"><b style="font-size:36px;color:#ffb4a8">62k ₽</b><span class="sub">вернуть в месяц — заявки и долги</span></div>
+    <div class="fact"><b style="font-size:36px;color:#ffb4a8">40k ₽</b><span class="sub">доп. выручка от удержания</span></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h3>Пример сети · 3 школы</h3>
+    <p style="margin-top:8px">1 × до 99 (6 000) + 2 × 100–199 (10 000) = <b style="color:var(--acc)">26 000 ₽ / месяц</b> · 78 000 ₽ / квартал</p>
+  </div>
+  <p class="footer-note">Ориентир по опыту партнёров — не обещание. Эффект зависит от школы и процессов.</p>
+</section>
+
+
+<section class="slide dark">
+  <div class="glow" style="left:50%;top:45%;transform:translate(-50%,-50%);width:70%;height:70%;background:radial-gradient(circle,#EF5B48 0%,transparent 60%);opacity:.2"></div>
+  <div class="dotgrid"></div>
+  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>06 / 06 · Контакты</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;max-width:900px">
+    <p class="kick">Оставить заявку</p>
+    <h1>Подберём тариф <em>под вашу школу</em></h1>
+    <p class="lead">Рассчитаем стоимость сети, подключим расширения и запустим пилот. Консультация бесплатная.</p>
+    <div class="grid-2" style="margin-top:28px">
+      <div class="card"><h3>Владислав Перескоков</h3><p style="margin-top:10px">v.pereskokov@manager360.pro<br>@v_pereskokov<br>+7 985 665-32-05</p></div>
+      <div class="card"><h3>Вадим Малов</h3><p style="margin-top:10px">v.malov@manager360.pro<br>@malov_m360<br>+7 916 343-60-25</p></div>
+    </div>
+  </div>
+  <p class="footer-note">manager360.online/promo/product/campus-360/tariffs</p>
+</section>
+
+</div>
+<nav class="deck-nav" aria-label="Навигация">
+  <button id="prev" type="button" aria-label="Назад">‹</button>
+  <span class="idx" id="idx">01 / 01</span>
+  <button id="next" type="button" aria-label="Вперёд">›</button>
+</nav>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('section.slide')];
+  let i=0;
+  const idx=document.getElementById('idx');
+  function show(n){
+    i=(n+slides.length)%slides.length;
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    if(idx) idx.textContent=(i+1).toString().padStart(2,'0')+' / '+slides.length.toString().padStart(2,'0');
+    location.hash = String(i+1);
+  }
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1)}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}
+    if(e.key==='Home')show(0);
+    if(e.key==='End')show(slides.length-1);
+  });
+  document.getElementById('next')?.addEventListener('click',()=>show(i+1));
+  document.getElementById('prev')?.addEventListener('click',()=>show(i-1));
+  const h=parseInt(location.hash.replace('#',''),10);
+  show(Number.isFinite(h)&&h>=1&&h<=slides.length?h-1:0);
+})();
+</script>
+
+</body>
+</html>

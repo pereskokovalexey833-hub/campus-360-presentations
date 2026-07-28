@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus 360 · презентации и NeuroTests</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0B1426; --acc:#EF5B48; --blue:#1672EA; --card:#162033; --line:#2a3a55; --mut:#94a3c4; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; font-family: Manrope, system-ui, sans-serif; color: #e8edf7;
+      background:
+        radial-gradient(900px 480px at 90% -10%, rgba(239,91,72,.22), transparent 55%),
+        radial-gradient(800px 420px at 0% 0%, rgba(22,114,234,.18), transparent 50%),
+        var(--bg);
+      padding: 48px 20px 80px;
+    }
+    .wrap { max-width: 860px; margin: 0 auto; }
+    .badge {
+      display: inline-block; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line);
+      color: #ffb4a8; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    }
+    h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; letter-spacing: -.03em; margin: 16px 0 8px; }
+    h1 span { color: var(--acc); }
+    .sub { color: var(--mut); font-size: 16px; line-height: 1.5; max-width: 52ch; margin-bottom: 36px; }
+    h2 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--mut); margin: 28px 0 12px; }
+    .grid { display: grid; gap: 12px; }
+    a.card {
+      display: block; text-decoration: none; color: inherit;
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px;
+      transition: .15s border-color, .15s transform;
+    }
+    a.card:hover { border-color: var(--acc); transform: translateY(-2px); }
+    a.card b { display: block; font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+    a.card span { color: var(--mut); font-size: 14px; line-height: 1.4; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .pill {
+      font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 999px;
+      background: rgba(239,91,72,.12); color: #ffb4a8;
+    }
+    .pill.blue { background: rgba(22,114,234,.12); color: #8eb6ff; }
+    .note { margin-top: 40px; font-size: 13px; color: var(--mut); line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="badge">Campus 360 · Manager 360</span>
+    <h1>Презентации и <span>маркетплейс</span></h1>
+    <p class="sub">Все файлы самодостаточные: можно открыть по ссылке или скачать HTML и отправить в Telegram / почту.</p>
+
+    <h2>Campus 360</h2>
+    <div class="grid">
+      <a class="card" href="./campus-360-booklet.html">
+        <b>Буклет продукта</b>
+        <span>Миссия, роли, функционал, нейротесты, кейсы. Навигация: ← → / пробел.</span>
+        <div class="row"><span class="pill">презентация</span><span class="pill blue">отправить клиенту</span></div>
+      </a>
+      <a class="card" href="./campus-360-modules-prices.html">
+        <b>Модули и цены</b>
+        <span>База, расширения, тарифная сетка 6–40 тыс ₽, эффект для школы.</span>
+        <div class="row"><span class="pill">презентация</span><span class="pill blue">тарифы</span></div>
+      </a>
+    </div>
+
+    <h2>NeuroTests</h2>
+    <div class="grid">
+      <a class="card" href="./neurotests-marketplace.html">
+        <b>Маркетплейс тестов</b>
+        <span>25 тестов, батареи, фильтры, корзина и заявка. Картинки внутри файла.</span>
+        <div class="row"><span class="pill">маркетплейс</span><span class="pill blue">корзина</span></div>
+      </a>
+      <a class="card" href="./neurotests-presentation.html">
+        <b>Презентация NeuroTests</b>
+        <span>Что такое батареи, все наборы, каталог по семействам.</span>
+        <div class="row"><span class="pill">презентация</span></div>
+      </a>
+    </div>
+
+    <p class="note">
+      Чтобы отправить файл: скачайте HTML (ПКМ → «Сохранить как…») и приложите в чат.<br>
+      Репозиторий: <a href="https://github.com/pereskokovalexey833-hub/marketplace" style="color:#8eb6ff">github.com/pereskokovalexey833-hub/marketplace</a>
+      → папка <code>presentations/</code> и <code>public/presentations/</code>.
+    </p>
+  </div>
+</body>
+</html>
