@@ -1,27 +1,25 @@
 # Campus 360 · презентации и NeuroTests
 
-Статический сайт: буклет, модули/цены, маркетплейс нейротестов и презентация.
+## Как смотреть
 
-## Смотреть как презентацию (не как код)
+В Cursor / GitHub вы видите **код HTML**.  
+Чтобы увидеть **слайды и маркетплейс**, открывайте в **браузере**:
 
-Откройте **ссылки ниже в браузере** (Chrome / Safari) — это готовые слайды и маркетплейс.
+### Онлайн (отправьте клиенту эти ссылки)
 
-Локально: двойной клик по `.html` или:
+- [Оглавление](https://pereskokovalexey833-hub.github.io/campus-360-presentations/)
+- [Буклет Campus 360](https://pereskokovalexey833-hub.github.io/campus-360-presentations/campus-360-booklet.html)
+- [Модули и цены](https://pereskokovalexey833-hub.github.io/campus-360-presentations/campus-360-modules-prices.html)
+- [Маркетплейс NeuroTests](https://pereskokovalexey833-hub.github.io/campus-360-presentations/neurotests-marketplace.html)
+- [Презентация NeuroTests](https://pereskokovalexey833-hub.github.io/campus-360-presentations/neurotests-presentation.html)
+
+### Локально
 
 ```bash
 open index.html
+# или двойной клик по любому .html файлу
 ```
 
-В Cursor файл открывается как **код**. Чтобы увидеть результат — всегда открывайте в браузере.
-
-## Страницы
-
-| Страница | Файл |
-|---|---|
-| Оглавление | `index.html` |
-| Буклет Campus 360 | `campus-360-booklet.html` |
-| Модули и цены | `campus-360-modules-prices.html` |
-| Маркетплейс NeuroTests | `neurotests-marketplace.html` |
-| Презентация NeuroTests | `neurotests-presentation.html` |
-
 Навигация слайдов: `←` `→`, пробел.
+
+Репозиторий: https://github.com/pereskokovalexey833-hub/campus-360-presentations
