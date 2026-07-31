@@ -8,7 +8,7 @@
 ### Онлайн (отправьте клиенту эти ссылки)
 
 - [Оглавление](https://pereskokovalexey833-hub.github.io/campus-360-presentations/)
-- [Буклет Campus 360](https://pereskokovalexey833-hub.github.io/campus-360-presentations/campus-360-booklet.html)
+- [Буклет Campus 360 (со скриншотами продукта)](https://pereskokovalexey833-hub.github.io/campus-360-presentations/campus-360-booklet.html)
 - [Модули и цены](https://pereskokovalexey833-hub.github.io/campus-360-presentations/campus-360-modules-prices.html)
 - [Маркетплейс NeuroTests](https://pereskokovalexey833-hub.github.io/campus-360-presentations/neurotests-marketplace.html)
 - [Презентация NeuroTests](https://pereskokovalexey833-hub.github.io/campus-360-presentations/neurotests-presentation.html)
