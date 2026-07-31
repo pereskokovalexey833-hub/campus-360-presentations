@@ -1,25 +1,32 @@
-# Campus 360 · презентации и NeuroTests
+# Campus 360 · материалы (приватный)
+
+Поставка по ТЗ: буклет Campus 360, короткая преза модулей/тарифов, маркетплейс NeuroTests с корзиной, презентация NeuroTests с блоком батарей.
 
 ## Как смотреть
 
-В Cursor / GitHub вы видите **код HTML**.  
-Чтобы увидеть **слайды и маркетплейс**, открывайте в **браузере**:
-
-### Онлайн (отправьте клиенту эти ссылки)
-
-- [Оглавление](https://pereskokovalexey833-hub.github.io/campus-360-presentations/)
-- [Буклет Campus 360 (со скриншотами продукта)](https://pereskokovalexey833-hub.github.io/campus-360-presentations/campus-360-booklet.html)
-- [Модули и цены](https://pereskokovalexey833-hub.github.io/campus-360-presentations/campus-360-modules-prices.html)
-- [Маркетплейс NeuroTests](https://pereskokovalexey833-hub.github.io/campus-360-presentations/neurotests-marketplace.html)
-- [Презентация NeuroTests](https://pereskokovalexey833-hub.github.io/campus-360-presentations/neurotests-presentation.html)
-
-### Локально
+Файлы — самостоятельные HTML. Открывайте **в браузере**, не как код:
 
 ```bash
 open index.html
-# или двойной клик по любому .html файлу
 ```
 
-Навигация слайдов: `←` `→`, пробел.
+| Файл | Что это |
+|---|---|
+| `campus-360-booklet.html` | Буклет продукта (брошюра + живые скрины ERP) |
+| `campus-360-modules-prices.html` | Короткая преза: модули и тарифы 6–40 тыс ₽ |
+| `neurotests-marketplace.html` | Маркетплейс тестов: картинки, теги, корзина, батареи |
+| `neurotests-presentation.html` | Презентация NeuroTests + отдельный блок батарей |
 
-Репозиторий: https://github.com/pereskokovalexey833-hub/campus-360-presentations
+Навигация слайдов: `←` `→`, пробел. Буклет — вертикальный скролл.
+
+## Соответствие ТЗ
+
+1. **Буклет Campus 360 с функционалом** — миссия, собственник/должники, заявки, расписание, тренер, родитель, нейротесты, роли, кейсы, контакты; скриншоты из тестовых доступов.
+2. **Короткая преза модули и цены** — база, расширения, сетка тарифов с сайта, пример сети, эффект, контакты. Стиль М360 × цвета Campus (`#EF5B48` / `#0B1426`).
+3. **Маркетплейс NeuroTests** — 25 тестов, постеры/теги, 6 батарей, корзина и заявка, дизайн Campus.
+4. **Презентация NeuroTests** — все тесты по семействам + блок «батареи тестов» (взрывная сила, скорость/ловкость и др.).
+
+## Контакты в материалах
+
+- Владислав Перескоков — v.pereskokov@manager360.pro
+- Вадим Малов — v.malov@manager360.pro
