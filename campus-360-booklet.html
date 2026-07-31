@@ -4,432 +4,423 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Кампус 360 — продукт · буклет</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Shared deck styles — M360 layout × Campus 360 palette */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
-
 :root{
-  --acc:#EF5B48;
-  --acc-soft:rgba(239,91,72,.12);
-  --acc-line:rgba(239,91,72,.32);
-  --blue:#1672EA;
-  --blue-soft:rgba(22,114,234,.10);
-  --blue-on:#5AA0FF;
-  --ink:#0B1426;
-  --ink-2:#475569;
-  --ink-3:#94A3B8;
-  --bg:#FFFFFF;
-  --card:#F6F8FB;
-  --card2:#EEF2F7;
-  --line:rgba(11,20,38,.10);
-  --good:#1F8A5B;
-  --gold:#B58A4B;
-  --on-1:#fff;
-  --on-2:rgba(255,255,255,.78);
-  --on-3:rgba(255,255,255,.55);
-  --pad-x:96px;
-  --pad-y:72px;
+  --acc:#EF5B48; --acc2:#ff8f7f; --blue:#1672EA; --blue2:#5AA0FF;
+  --ink:#0B1426; --paper:#F7F4EF; --paper2:#EEE9E1; --line:rgba(11,20,38,.12);
+  --mut:#5c6578; --good:#1F8A5B;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:#0B1426;color:var(--ink);font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-.deck-nav{
-  position:fixed;z-index:50;left:50%;bottom:22px;transform:translateX(-50%);
-  display:flex;gap:10px;align-items:center;
-  background:rgba(11,20,38,.78);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 12px;
-  color:#fff;font-size:13px;font-weight:600;
+html{scroll-behavior:smooth}
+body{
+  font-family:"IBM Plex Sans",Manrope,system-ui,sans-serif;
+  background:#1a1520;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
 }
-.deck-nav button{
-  appearance:none;border:0;background:rgba(255,255,255,.1);color:#fff;
-  width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;font-weight:700;
-}
-.deck-nav button:hover{background:var(--acc)}
-.deck-nav .idx{min-width:64px;text-align:center;opacity:.85}
-deck-stage, .deck{
-  width:100vw;height:100vh;overflow:hidden;position:relative;
-}
-section.slide{
-  position:absolute;inset:0;width:100%;height:100%;
-  padding:var(--pad-y) var(--pad-x);
-  display:none;flex-direction:column;overflow:hidden;
-  background:var(--bg);
-}
-section.slide.on{display:flex}
-section.slide.dark{background:var(--ink);color:var(--on-1)}
-.dotgrid{
-  position:absolute;inset:0;pointer-events:none;opacity:.35;
-  background-image:radial-gradient(rgba(11,20,38,.18) 1px, transparent 1px);
-  background-size:22px 22px;
-}
-.dark .dotgrid{background-image:radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);opacity:.5}
-.glow{position:absolute;width:55%;height:55%;border-radius:50%;filter:blur(40px);pointer-events:none}
-.meta,.top{
+a{color:inherit}
+
+/* floating booklet chrome — not presentation arrows */
+.book-bar{
+  position:fixed;top:0;left:0;right:0;z-index:40;
   display:flex;justify-content:space-between;align-items:center;
-  font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-3);position:relative;z-index:2;
+  padding:12px 22px;
+  background:rgba(11,20,38,.72);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.08);color:#fff;
+  font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
 }
-.dark .meta,.dark .top{color:var(--on-3)}
-.brand-mark{
-  display:inline-flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;
-  text-transform:none;font-size:15px;color:var(--ink);
+.book-bar .mark{
+  display:inline-flex;align-items:center;gap:8px;text-transform:none;letter-spacing:-.02em;font-size:14px;font-weight:800;
 }
-.dark .brand-mark{color:#fff}
-.brand-mark .pill360{
-  background:var(--acc);color:#fff;border-radius:999px;padding:4px 10px;font-size:12px;letter-spacing:.04em;
-}
-.kick{font-size:15px;font-weight:700;color:var(--acc);letter-spacing:.02em;margin-bottom:14px}
-.dark .kick{color:#ff8f7f}
-h1{
-  font-size:clamp(36px,4.6vw,64px);line-height:1.05;font-weight:800;letter-spacing:-.03em;
-  max-width:16ch;
-}
-h1 em{font-style:normal;color:var(--acc)}
-.dark h1 em{color:#ff8f7f}
-.lead{margin-top:18px;font-size:clamp(16px,1.35vw,20px);line-height:1.45;color:var(--ink-2);max-width:46ch;font-weight:500}
-.dark .lead{color:var(--on-2)}
-.lead .hi{color:var(--acc);font-weight:700}
-.dark .lead .hi{color:#ffb4a8}
-.cta-chip{
-  display:inline-flex;margin-top:28px;padding:12px 18px;border-radius:999px;
-  background:var(--acc);color:#fff;font-weight:700;font-size:14px;
-}
-.grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;flex:1;align-items:stretch;margin-top:28px;min-height:0;position:relative;z-index:2}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;position:relative;z-index:2}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px;position:relative;z-index:2}
-.card{
-  background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 22px 20px;
-}
-.dark .card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
-.card h3{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.02em}
-.card p,.card li{font-size:14px;line-height:1.45;color:var(--ink-2);font-weight:500}
-.dark .card p,.dark .card li{color:var(--on-2)}
-.card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px}
-.card li{display:flex;gap:10px}
-.card li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--acc);margin-top:7px;flex:none}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;
-  background:var(--acc-soft);color:var(--acc);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-}
-.fact{background:linear-gradient(160deg,#141f36,#0B1426);color:#fff;border-radius:24px;padding:28px;border:1px solid rgba(255,255,255,.08)}
-.fact b{display:block;font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1;color:#fff}
-.fact .sub{display:block;margin-top:10px;color:var(--on-2);font-size:15px;line-height:1.4;font-weight:500}
-.price{font-size:34px;font-weight:800;letter-spacing:-.03em}
-.price small{font-size:14px;font-weight:600;color:var(--ink-3)}
-.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--blue-soft);color:var(--blue)}
-.footer-note{margin-top:auto;padding-top:18px;font-size:12px;color:var(--ink-3);position:relative;z-index:2}
-.dark .footer-note{color:var(--on-3)}
-.role-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 8px;position:relative;z-index:2}
-.role-tabs span{
-  padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--ink-2);background:#fff;
-}
-.role-tabs span.on{background:var(--acc);border-color:transparent;color:#fff}
-.table{width:100%;border-collapse:separate;border-spacing:0 8px;margin-top:8px;position:relative;z-index:2}
-.table th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);text-align:left;padding:0 14px 6px;font-weight:700}
-.table td{
-  background:var(--card);padding:14px 16px;font-size:15px;font-weight:600;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-}
-.table td:first-child{border-left:1px solid var(--line);border-radius:14px 0 0 14px}
-.table td:last-child{border-right:1px solid var(--line);border-radius:0 14px 14px 0}
-.table .hi{color:var(--acc);font-weight:800}
-.shot{
-  border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#0a1020;
-  min-height:220px;display:flex;align-items:center;justify-content:center;position:relative;
-}
-.shot img{width:100%;height:100%;object-fit:cover;display:block}
-.shot .cap{
-  position:absolute;left:12px;bottom:12px;background:rgba(6,10,20,.75);color:#fff;
-  font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);
-}
-@media (max-width:1100px){
-  :root{--pad-x:28px;--pad-y:28px}
-  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;gap:14px;overflow:auto}
-  h1{font-size:34px}
+.book-bar .pill{background:var(--acc);padding:3px 8px;border-radius:999px;font-size:11px}
+.book-bar a{color:rgba(255,255,255,.7);text-decoration:none}
+.book-bar a:hover{color:#fff}
+
+.book{
+  max-width:1180px;margin:0 auto;padding:72px 16px 80px;
 }
 
+/* each spread = brochure page */
+.spread{
+  background:var(--paper);
+  border-radius:28px;
+  overflow:hidden;
+  margin:0 0 28px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.06);
+}
+.spread.cover{
+  background:linear-gradient(145deg,#0B1426 0%,#16233d 55%,#2a1830 100%);
+  color:#fff;min-height:min(86vh,820px);
+  display:grid;grid-template-columns:1.05fr .95fr;
+}
+@media(max-width:900px){
+  .spread.cover{grid-template-columns:1fr}
+  .spread .cols{grid-template-columns:1fr !important}
+}
 
-.shot-frame{
-  border-radius:18px;overflow:hidden;border:1px solid var(--line);
-  background:#0a1020;box-shadow:0 18px 50px rgba(0,0,0,.25);
-  position:relative;min-height:0;
+.cover-left{padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.cover-left::after{
+  content:"";position:absolute;inset:auto -40% -30% auto;width:70%;height:70%;
+  background:radial-gradient(circle,rgba(239,91,72,.35),transparent 60%);pointer-events:none;
 }
-.shot-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;max-height:520px}
-.shot-frame.tall img{max-height:560px}
-.shot-cap{
-  position:absolute;left:12px;bottom:12px;
-  background:rgba(6,10,20,.8);border:1px solid rgba(255,255,255,.14);
-  color:#fff;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,255,255,.16);background:rgba(239,91,72,.12);
+  color:var(--acc2);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 12px;border-radius:999px;width:max-content;position:relative;z-index:1;
 }
-.feature-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:18px;position:relative;z-index:2}
-.feature-list li{
-  display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;
-  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;
+.cover h1{
+  font-family:Manrope,sans-serif;font-size:clamp(36px,4.8vw,58px);line-height:1.02;
+  font-weight:800;letter-spacing:-.035em;max-width:12ch;margin:28px 0 16px;position:relative;z-index:1;
 }
-.dark .feature-list li{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
-.feature-list .n{
+.cover h1 em{font-style:normal;color:var(--acc)}
+.cover .lead{color:rgba(255,255,255,.72);font-size:17px;line-height:1.5;max-width:36ch;position:relative;z-index:1}
+.cover-meta{display:flex;gap:18px;flex-wrap:wrap;color:rgba(255,255,255,.55);font-size:13px;font-weight:600;position:relative;z-index:1}
+.cover-right{position:relative;min-height:360px}
+.cover-right img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.cover-right .cap{
+  position:absolute;left:16px;bottom:16px;right:16px;
+  background:rgba(6,10,20,.78);border:1px solid rgba(255,255,255,.12);
+  color:#fff;font-size:12px;font-weight:700;padding:10px 12px;border-radius:14px;
+}
+
+.page-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 40px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.35);
+  font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);
+}
+.page-head .num{color:var(--acc)}
+.cols{display:grid;grid-template-columns:1fr 1.15fr;gap:0;min-height:520px}
+.cols.flip{grid-template-columns:1.15fr 1fr}
+.cols.text-only{grid-template-columns:1fr;padding:36px 40px 44px}
+.copy{padding:36px 40px 44px;display:flex;flex-direction:column}
+.copy h2{
+  font-family:Manrope,sans-serif;font-size:clamp(28px,3.2vw,40px);line-height:1.05;
+  font-weight:800;letter-spacing:-.03em;max-width:14ch;margin:10px 0 14px;
+}
+.copy h2 em{font-style:normal;color:var(--acc)}
+.kicker{color:var(--acc);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.copy .p{color:var(--mut);font-size:15px;line-height:1.55;max-width:42ch;font-weight:500}
+.bullets{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.bullets li{
+  display:grid;grid-template-columns:10px 1fr;gap:12px;align-items:start;
+  padding-bottom:12px;border-bottom:1px solid var(--line);
+}
+.bullets li:last-child{border-bottom:0;padding-bottom:0}
+.bullets i{
+  width:10px;height:10px;border-radius:50%;background:var(--acc);margin-top:6px;display:block;
+}
+.bullets b{display:block;font-family:Manrope,sans-serif;font-size:15px;font-weight:800;margin-bottom:3px}
+.bullets span{display:block;color:var(--mut);font-size:13.5px;line-height:1.4;font-weight:500}
+.visual{background:#0B1426;position:relative;min-height:420px}
+.visual img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;min-height:420px}
+.visual .cap{
+  position:absolute;left:14px;bottom:14px;
+  background:rgba(6,10,20,.8);border:1px solid rgba(255,255,255,.12);
+  color:#fff;font-size:12px;font-weight:700;padding:7px 11px;border-radius:999px;
+}
+
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+@media(max-width:900px){.grid4,.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid4,.grid3{grid-template-columns:1fr}.copy,.page-head{padding-left:22px;padding-right:22px}}
+.tile{
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 16px;
+  box-shadow:0 8px 24px rgba(11,20,38,.04);
+}
+.tile .n{
   width:28px;height:28px;border-radius:9px;background:var(--acc);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-bottom:12px;
 }
-.feature-list b{display:block;font-size:14px;font-weight:800;margin-bottom:2px}
-.feature-list span{font-size:13px;color:var(--ink-2);font-weight:500;line-height:1.35}
-.dark .feature-list span{color:var(--on-2)}
-.split{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;flex:1;min-height:0;margin-top:22px;position:relative;z-index:2;align-items:stretch}
-.split.reverse{grid-template-columns:1.15fr 1fr}
-@media(max-width:1100px){.split,.split.reverse{grid-template-columns:1fr;overflow:auto}}
-.logo-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:2}
-.logo-pill{
-  background:rgba(255,255,255,.92);color:#0B1426;border-radius:12px;padding:10px 14px;
-  font-size:12px;font-weight:800;
-}
+.tile h3{font-family:Manrope,sans-serif;font-size:16px;font-weight:800;margin-bottom:6px}
+.tile p{color:var(--mut);font-size:13px;line-height:1.4;font-weight:500}
 
+.quote{
+  margin-top:auto;padding-top:22px;border-top:1px solid var(--line);
+  font-size:14px;color:var(--mut);font-weight:500;line-height:1.45;
+}
+.quote strong{color:var(--ink);font-weight:800}
+
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-top:22px}
+.toc a{
+  display:flex;justify-content:space-between;gap:12px;text-decoration:none;
+  padding:12px 0;border-bottom:1px solid var(--line);color:var(--ink);font-weight:700;font-size:14px;
+}
+.toc a span{color:var(--acc);font-family:Manrope,sans-serif}
+
+.dark-spread{
+  background:linear-gradient(160deg,#0B1426,#16233d);color:#fff;
+}
+.dark-spread .page-head{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.dark-spread .copy h2{color:#fff}
+.dark-spread .copy .p,.dark-spread .bullets span,.dark-spread .tile p,.dark-spread .quote{color:rgba(255,255,255,.7)}
+.dark-spread .bullets li,.dark-spread .quote{border-color:rgba(255,255,255,.1)}
+.dark-spread .bullets b,.dark-spread .tile h3,.dark-spread .quote strong{color:#fff}
+.dark-spread .tile{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);box-shadow:none}
+
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.contacts .tile strong{display:block;margin-top:10px;font-size:13px;color:var(--mut);font-weight:600}
+.foot-note{
+  text-align:center;color:rgba(255,255,255,.4);font-size:12px;font-weight:600;padding:8px 12px 0;
+}
 </style>
 </head>
 <body>
-<div class="deck">
+<header class="book-bar">
+  <div class="mark">Campus <span class="pill">360</span> · продуктовый буклет</div>
+  <div style="display:flex;gap:16px;align-items:center">
+    <a href="./index.html">← Оглавление</a>
+    <a href="./campus-360-modules-prices.html">Презентация: модули и цены</a>
+  </div>
+</header>
 
-<section class="slide dark on">
-  <div class="glow" style="right:-18%;bottom:-28%;background:radial-gradient(circle,#EF5B48 0%,transparent 55%);opacity:.32"></div>
-  <div class="glow" style="left:-22%;top:-34%;background:radial-gradient(circle,#1672EA 0%,transparent 55%);opacity:.2"></div>
-  <div class="dotgrid"></div>
-  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>01 / 11 · Буклет</span></div>
-  <div class="split" style="align-items:center">
-    <div>
-      <p class="kick">Продуктовый буклет · 2026</p>
-      <h1>Кампус 360.<br>Делаем детский спорт лучше — <em>вместе</em></h1>
-      <p class="lead">Одна программа для всей школы: учёт детей, общение с родителями, помощь тренеру и современные технологии Manager 360.</p>
-      <div class="cta-chip">Функционал · роли · живые экраны</div>
+<main class="book">
+
+  <!-- COVER -->
+  <article class="spread cover" id="cover">
+    <div class="cover-left">
+      <div>
+        <div class="eyebrow">Manager 360 · продукт · 2026</div>
+        <h1>Кампус 360.<br>Делаем детский спорт лучше — <em>вместе</em></h1>
+        <p class="lead">Одна программа для всей школы: учёт детей, общение с родителями, помощь тренеру и современные технологии Manager 360.</p>
+      </div>
+      <div class="cover-meta">
+        <span>Буклет продукта</span>
+        <span>Не презентация — брошюра</span>
+        <span>Живые экраны Campus</span>
+      </div>
     </div>
-    <div class="shot-frame tall">
+    <div class="cover-right">
       <img src="assets/screenshots/01-campus-landing.png" alt="Campus 360">
-      <div class="shot-cap">manager360.online/campus-360</div>
+      <div class="cap">Лендинг Campus 360 · manager360.online</div>
     </div>
-  </div>
-</section>
+  </article>
 
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>02 / 11 · Миссия</span></div>
-  <p class="kick" style="margin-top:18px">Наша миссия</p>
-  <h1>Ребёнок, родитель, тренер и школа — <em>на одной стороне</em></h1>
-  <div class="grid-4" style="margin-top:28px">
-    <div class="card"><h3>Ребёнок</h3><p>Счастлив и вовлечён. Видит путь, достижения и прогресс.</p></div>
-    <div class="card"><h3>Родитель</h3><p>Спокоен за безопасность и развитие — без звонков «ну как там?».</p></div>
-    <div class="card"><h3>Тренер</h3><p>Ведёт процесс: конспекты, посещаемость, нагрузка и нейротесты.</p></div>
-    <div class="card"><h3>Школа</h3><p>Выручка, заявки, должники и филиалы — на одном экране.</p></div>
-  </div>
-  <div class="logo-row">
-    <span class="logo-pill">Спартак Будущее</span>
-    <span class="logo-pill">Спарта</span>
-    <span class="logo-pill">Зобнин Team</span>
-    <span class="logo-pill">Академия Кантера</span>
-  </div>
-</section>
-
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>03 / 11 · Собственник</span></div>
-  <div class="split">
-    <div>
-      <p class="kick">Для директора и собственника</p>
-      <h1>Экономика школы <em>на одном экране</em></h1>
-      <ul class="feature-list">
-        <li><span class="n">1</span><div><b>Выручка и должники</b><span>Продления, долги и загрузка групп — без сводных таблиц в конце месяца.</span></div></li>
-        <li><span class="n">2</span><div><b>Филиалы под контролем</b><span>Сравнение школ и групп: где рост, где проседание.</span></div></li>
-        <li><span class="n">3</span><div><b>ИИ-подсказки</b><span>Где теряются заявки, кто перегружен, какие группы недозаполнены.</span></div></li>
-      </ul>
-    </div>
-    <div class="shot-frame tall">
-      <img src="assets/screenshots/07-manager-debtors.png" alt="Должники ERP">
-      <div class="shot-cap">ERP · должники · Campus 360 Spartak Academy</div>
-    </div>
-  </div>
-</section>
-
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>04 / 11 · Заявки</span></div>
-  <div class="split reverse">
-    <div class="shot-frame tall">
-      <img src="assets/screenshots/03-manager-zayavki.png" alt="Воронка заявок">
-      <div class="shot-cap">CRM · воронка заявок менеджера</div>
-    </div>
-    <div>
-      <p class="kick">От заявки до оплаты</p>
-      <h1>Воронка без потерь — <em>в 3 раза быстрее</em></h1>
-      <ul class="feature-list">
-        <li><span class="n">1</span><div><b>Новые заявки и статусы</b><span>От «нового лида» до оплаты абонемента — каждый этап на доске.</span></div></li>
-        <li><span class="n">2</span><div><b>Напоминания и оплата по ссылке</b><span>Родитель платит онлайн, школа видит статус сразу.</span></div></li>
-        <li><span class="n">3</span><div><b>Продления и должники</b><span>Отдельные контуры, чтобы деньги не терялись в чатах.</span></div></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>05 / 11 · Расписание</span></div>
-  <div class="split">
-    <div>
-      <p class="kick">Расписание школы</p>
-      <h1>Календарь групп — <em>вместо Excel</em></h1>
-      <ul class="feature-list">
-        <li><span class="n">1</span><div><b>Неделя и месяц</b><span>Все тренировки школы на одном календаре.</span></div></li>
-        <li><span class="n">2</span><div><b>События по группам</b><span>Фильтр по группе, быстрое добавление занятия.</span></div></li>
-        <li><span class="n">3</span><div><b>Связка с тренером</b><span>Расписание уходит в приложение тренера и родителя.</span></div></li>
-      </ul>
-    </div>
-    <div class="shot-frame tall">
-      <img src="assets/screenshots/04-manager-schedule.png" alt="Расписание">
-      <div class="shot-cap">Расписание · недельный вид</div>
-    </div>
-  </div>
-</section>
-
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>06 / 11 · Тренер</span></div>
-  <div class="split reverse">
-    <div class="shot-frame tall">
-      <img src="assets/screenshots/08-coach-trainings.png" alt="Тренировки">
-      <div class="shot-cap">Тренировочный центр · журнал тренировок</div>
-    </div>
-    <div>
-      <p class="kick">Тренировочный процесс</p>
-      <h1>Тренер ведёт процесс, <em>а не бумажки</em></h1>
-      <ul class="feature-list">
-        <li><span class="n">1</span><div><b>Журнал и шаблоны</b><span>План занятия, повтор микроцикла, статусы тренировок.</span></div></li>
-        <li><span class="n">2</span><div><b>Посещаемость</b><span>Отметка «был / не был» — сразу в отчёт родителю.</span></div></li>
-        <li><span class="n">3</span><div><b>ИИ-ассистент</b><span>Подсказки по нагрузке и конспектам в приложении тренера.</span></div></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="glow" style="right:-16%;top:-20%;background:radial-gradient(circle,#EF5B48 0%,transparent 55%);opacity:.25"></div>
-  <div class="dotgrid"></div>
-  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>07 / 11 · Родитель</span></div>
-  <p class="kick" style="margin-top:18px">Доверие родителей</p>
-  <h1>Школа и родитель — <em>на одной стороне</em></h1>
-  <div class="grid-3" style="margin-top:28px">
-    <div class="card"><h3>Автоотчёты</h3><p>Посещения, прогресс и безопасность — понятные сообщения после занятий.</p></div>
-    <div class="card"><h3>Геймификация</h3><p>Ребёнок видит уровни и награды. Родитель — что получилось и что дальше.</p></div>
-    <div class="card"><h3>Оплаты</h3><p>Кабинет родителя: расписание ребёнка и оплата абонемента онлайн.</p></div>
-  </div>
-  <div class="card" style="margin-top:18px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center">
-    <div><h3>Удержание растёт за счёт прозрачности</h3><p style="margin-top:6px">Когда родитель видит прогресс, доля продлений у партнёров выросла до 7×.</p></div>
-    <div class="price" style="color:#ffb4a8">до 7× <small style="color:var(--on-3)">продлений</small></div>
-  </div>
-</section>
-
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>08 / 11 · Нейротесты</span></div>
-  <div class="split">
-    <div>
-      <p class="kick">Computer Vision · Human Pose</p>
-      <h1>Регулярные тесты <em>через камеру</em></h1>
-      <ul class="feature-list">
-        <li><span class="n">1</span><div><b>Батареи тестов</b><span>Готовые наборы: спринт, CMJ, 5-10-5, змейка — массовое тестирование.</span></div></li>
-        <li><span class="n">2</span><div><b>Объективные метрики</b><span>Компьютерное зрение фиксирует показатели без датчиков и лабораторий.</span></div></li>
-        <li><span class="n">3</span><div><b>Отчёт родителю и тренеру</b><span>Прогресс ребёнка видно от месяца к месяцу.</span></div></li>
-      </ul>
-    </div>
-    <div class="shot-frame tall">
-      <img src="assets/screenshots/06-neurotests-batteries.png" alt="Нейротесты">
-      <div class="shot-cap">Нейротесты · батареи в Campus 360</div>
-    </div>
-  </div>
-</section>
-
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>09 / 11 · Роли</span></div>
-  <p class="kick" style="margin-top:18px">Кто что делает</p>
-  <h1>Пять ролей — <em>один контур</em></h1>
-  <div class="grid-3" style="grid-template-columns:repeat(5,1fr);margin-top:24px">
-    <div class="card"><span class="tag">01</span><h3 style="margin-top:10px">Директор</h3><p>Выручка, долги, NPS, филиалы, ИИ-подсказки.</p></div>
-    <div class="card"><span class="tag">02</span><h3 style="margin-top:10px">Менеджер</h3><p>Заявки, абонементы, расписание, должники.</p></div>
-    <div class="card"><span class="tag">03</span><h3 style="margin-top:10px">Тренер</h3><p>Конспекты, посещаемость, прогресс, нейротесты.</p></div>
-    <div class="card"><span class="tag">04</span><h3 style="margin-top:10px">Родитель</h3><p>Расписание, оплата, отчёты, геймификация.</p></div>
-    <div class="card"><span class="tag">05</span><h3 style="margin-top:10px">Ребёнок</h3><p>Достижения, уровни, мотивация к тренировкам.</p></div>
-  </div>
-  <div class="card" style="margin-top:16px">
-    <h3>База уже включает запуск школы</h3>
-    <p style="margin-top:6px">Тренировки · управление · платежи и родители. Расширения: франшиза, бренд, датчики, CV, IP-камеры — по запросу.</p>
-  </div>
-</section>
-
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>10 / 11 · Доверие</span></div>
-  <p class="kick" style="margin-top:18px">Школы, которые уже с нами</p>
-  <h1>Проверено на академиях <em>и франшизах</em></h1>
-  <div class="grid-4" style="margin-top:24px">
-    <div class="card"><h3>Спартак Будущее</h3><p>Единая цифровая среда — от первой тренировки до сборной.</p></div>
-    <div class="card"><h3>Спарта</h3><p>Родители видят прогресс, администрация — цифры.</p></div>
-    <div class="card"><h3>Зобнин Team</h3><p>Конспект и микроцикл — минуты вместо часов.</p></div>
-    <div class="card"><h3>Академия Кантера</h3><p>Прозрачная коммуникация изменила удержание и NPS.</p></div>
-  </div>
-  <div class="grid-3" style="margin-top:14px">
-    <div class="card"><h3>Яндекс.Облако / on-prem</h3><p>Облако или ваши серверы. SLA 99.96%.</p></div>
-    <div class="card"><h3>ФЗ-152 · Group-IB</h3><p>Изоляция данных, аудит безопасности, автобэкапы.</p></div>
-    <div class="card"><h3>Поддержка</h3><p>Онбординг, вики, академия, закреплённый менеджер.</p></div>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="glow" style="left:50%;top:45%;transform:translate(-50%,-50%);width:70%;height:70%;background:radial-gradient(circle,#EF5B48 0%,transparent 60%);opacity:.2"></div>
-  <div class="dotgrid"></div>
-  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>11 / 11 · Контакты</span></div>
-  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;max-width:980px">
-    <p class="kick">Следующий шаг</p>
-    <h1>Запустим вашу школу <em>за пару недель</em></h1>
-    <p class="lead">Пилот CRM — 2–4 недели. 15 минут демо — и станет понятно, подходит ли Campus 360.</p>
-    <div class="grid-2" style="max-width:900px;margin-top:28px">
-      <div class="card">
-        <h3>Владислав Перескоков</h3>
-        <p style="margin-top:8px">CEO · Manager 360</p>
-        <p style="margin-top:12px">v.pereskokov@manager360.pro<br>Telegram @v_pereskokov<br>+7 985 665-32-05</p>
-      </div>
-      <div class="card">
-        <h3>Вадим Малов</h3>
-        <p style="margin-top:8px">Менеджер по внедрению</p>
-        <p style="margin-top:12px">v.malov@manager360.pro<br>Telegram @malov_m360<br>+7 916 343-60-25</p>
+  <!-- TOC -->
+  <article class="spread" id="toc">
+    <div class="page-head"><span>Campus 360</span><span class="num">02 · Содержание</span></div>
+    <div class="cols text-only">
+      <div class="kicker">Как читать буклет</div>
+      <h2 style="max-width:18ch">Продукт целиком — <em>по ролям и экранам</em></h2>
+      <p class="p">Это брошюра: листайте вниз. Короткая презентация с тарифами — отдельный файл.</p>
+      <div class="toc">
+        <a href="#mission"><span>03</span> Миссия</a>
+        <a href="#owner"><span>04</span> Собственник и экономика</a>
+        <a href="#crm"><span>05</span> Заявки и CRM</a>
+        <a href="#schedule"><span>06</span> Расписание</a>
+        <a href="#coach"><span>07</span> Тренер</a>
+        <a href="#parent"><span>08</span> Родитель</a>
+        <a href="#neuro"><span>09</span> Нейротесты</a>
+        <a href="#roles"><span>10</span> Роли</a>
+        <a href="#trust"><span>11</span> Доверие</a>
+        <a href="#contacts"><span>12</span> Контакты</a>
       </div>
     </div>
-  </div>
-  <p class="footer-note">manager360.online/campus-360 · смотреть в браузере: ← → / пробел</p>
-</section>
+  </article>
 
-</div>
-<nav class="deck-nav" aria-label="Навигация">
-  <button id="prev" type="button" aria-label="Назад">‹</button>
-  <span class="idx" id="idx">01 / 11</span>
-  <button id="next" type="button" aria-label="Вперёд">›</button>
-</nav>
+  <!-- MISSION -->
+  <article class="spread" id="mission">
+    <div class="page-head"><span>Campus 360</span><span class="num">03 · Миссия</span></div>
+    <div class="cols text-only">
+      <div class="kicker">Для кого продукт</div>
+      <h2>Ребёнок, родитель, тренер и школа — <em>на одной стороне</em></h2>
+      <p class="p">Campus 360 закрывает разрыв между бизнесом школы и ежедневным тренерским процессом: все видят одну картину.</p>
+      <div class="grid4">
+        <div class="tile"><div class="n">01</div><h3>Ребёнок</h3><p>Вовлечён: путь, достижения, прогресс без «ну как там?».</p></div>
+        <div class="tile"><div class="n">02</div><h3>Родитель</h3><p>Спокоен: отчёты, расписание и оплата в одном кабинете.</p></div>
+        <div class="tile"><div class="n">03</div><h3>Тренер</h3><p>Ведёт процесс: конспекты, посещаемость, нейротесты.</p></div>
+        <div class="tile"><div class="n">04</div><h3>Школа</h3><p>Считает деньги: заявки, должники, филиалы, продления.</p></div>
+      </div>
+    </div>
+  </article>
 
-<script>
-(function(){
-  const slides=[...document.querySelectorAll('section.slide')];
-  let i=0; const idx=document.getElementById('idx');
-  function show(n){
-    i=(n+slides.length)%slides.length;
-    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
-    if(idx) idx.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
-    location.hash=String(i+1);
-  }
-  window.addEventListener('keydown',e=>{
-    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1)}
-    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}
-    if(e.key==='Home')show(0);
-    if(e.key==='End')show(slides.length-1);
-  });
-  document.getElementById('next')?.addEventListener('click',()=>show(i+1));
-  document.getElementById('prev')?.addEventListener('click',()=>show(i-1));
-  const h=parseInt(location.hash.replace('#',''),10);
-  show(Number.isFinite(h)&&h>=1&&h<=slides.length?h-1:0);
-})();
-</script>
+  <!-- OWNER -->
+  <article class="spread" id="owner">
+    <div class="page-head"><span>Campus 360</span><span class="num">04 · Собственник</span></div>
+    <div class="cols">
+      <div class="copy">
+        <div class="kicker">Экономика школы</div>
+        <h2>Цифры бизнеса <em>без сводных таблиц</em></h2>
+        <p class="p">Директор видит выручку, долги и загрузку групп в момент, когда ещё можно повлиять — а не в конце месяца.</p>
+        <ul class="bullets">
+          <li><i></i><div><b>Должники и абонементы</b><span>Кто не оплатил, какие группы проседают, куда уходят деньги.</span></div></li>
+          <li><i></i><div><b>Филиалы в сравнении</b><span>Сеть школ — в срезах, а не в десяти Excel-файлах.</span></div></li>
+          <li><i></i><div><b>ИИ-подсказки</b><span>Где теряются заявки и кто из тренеров перегружен.</span></div></li>
+        </ul>
+        <p class="quote"><strong>На практике:</strong> экран ERP должников в Campus 360 Spartak Academy.</p>
+      </div>
+      <div class="visual">
+        <img src="assets/screenshots/07-manager-debtors.png" alt="Должники">
+        <div class="cap">ERP · должники</div>
+      </div>
+    </div>
+  </article>
 
+  <!-- CRM -->
+  <article class="spread" id="crm">
+    <div class="page-head"><span>Campus 360</span><span class="num">05 · Заявки</span></div>
+    <div class="cols flip">
+      <div class="visual">
+        <img src="assets/screenshots/03-manager-zayavki.png" alt="Заявки">
+        <div class="cap">CRM · воронка заявок</div>
+      </div>
+      <div class="copy">
+        <div class="kicker">От заявки до оплаты</div>
+        <h2>Воронка без потерь — <em>в 3× быстрее</em></h2>
+        <p class="p">Менеджер ведёт лида по статусам: от «нового» до оплаты абонемента. Напоминания и ссылка на оплату — внутри процесса.</p>
+        <ul class="bullets">
+          <li><i></i><div><b>Доска статусов</b><span>Новый лид → пробное → ожидает оплаты → оплатил.</span></div></li>
+          <li><i></i><div><b>Продления отдельно</b><span>Повторные продажи не смешиваются с первичными заявками.</span></div></li>
+          <li><i></i><div><b>Оплата по ссылке</b><span>Родитель платит онлайн — школа видит статус сразу.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- SCHEDULE -->
+  <article class="spread" id="schedule">
+    <div class="page-head"><span>Campus 360</span><span class="num">06 · Расписание</span></div>
+    <div class="cols">
+      <div class="copy">
+        <div class="kicker">Календарь школы</div>
+        <h2>Неделя групп — <em>вместо Excel</em></h2>
+        <p class="p">Все тренировки на одном календаре. Фильтр по группе, быстрое добавление события, связка с тренером и родителем.</p>
+        <ul class="bullets">
+          <li><i></i><div><b>Неделя / месяц</b><span>Переключение видов под задачу администратора.</span></div></li>
+          <li><i></i><div><b>События по группам</b><span>«Группа PRO», время, повтор микроцикла.</span></div></li>
+          <li><i></i><div><b>Один источник правды</b><span>То же расписание уходит в приложения ролей.</span></div></li>
+        </ul>
+      </div>
+      <div class="visual">
+        <img src="assets/screenshots/04-manager-schedule.png" alt="Расписание">
+        <div class="cap">Расписание · недельный вид</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- COACH -->
+  <article class="spread" id="coach">
+    <div class="page-head"><span>Campus 360</span><span class="num">07 · Тренер</span></div>
+    <div class="cols flip">
+      <div class="visual">
+        <img src="assets/screenshots/08-coach-trainings.png" alt="Тренировки">
+        <div class="cap">Тренировочный центр · журнал</div>
+      </div>
+      <div class="copy">
+        <div class="kicker">Тренировочный процесс</div>
+        <h2>Тренер ведёт процесс, <em>а не бумажки</em></h2>
+        <p class="p">Журнал тренировок, шаблоны, статусы и посещаемость — в одном центре. Дальше это превращается в отчёт родителю.</p>
+        <ul class="bullets">
+          <li><i></i><div><b>Журнал и шаблоны</b><span>План занятия, повтор до даты, автор и статус.</span></div></li>
+          <li><i></i><div><b>Посещаемость</b><span>«Был / не был» попадает в коммуникацию с родителем.</span></div></li>
+          <li><i></i><div><b>ИИ-ассистент</b><span>Подсказки по нагрузке и конспектам в приложении.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- PARENT -->
+  <article class="spread dark-spread" id="parent">
+    <div class="page-head"><span>Campus 360</span><span class="num">08 · Родитель</span></div>
+    <div class="cols text-only">
+      <div class="kicker">Доверие</div>
+      <h2>Школа и родитель — <em>на одной стороне</em></h2>
+      <p class="p">Родитель не должен гадать, что происходит на тренировке. Прозрачность повышает NPS и продления.</p>
+      <div class="grid3">
+        <div class="tile"><div class="n">01</div><h3>Автоотчёты</h3><p>Посещения, прогресс и безопасность — после занятий, без звонков.</p></div>
+        <div class="tile"><div class="n">02</div><h3>Геймификация</h3><p>Ребёнок видит уровни и награды. Родитель — что дальше.</p></div>
+        <div class="tile"><div class="n">03</div><h3>Оплаты</h3><p>Кабинет: расписание ребёнка и оплата абонемента онлайн.</p></div>
+      </div>
+      <p class="quote" style="margin-top:28px"><strong>до 7×</strong> — рост доли продлений у партнёров, когда родитель видит прогресс.</p>
+    </div>
+  </article>
+
+  <!-- NEURO -->
+  <article class="spread" id="neuro">
+    <div class="page-head"><span>Campus 360</span><span class="num">09 · Нейротесты</span></div>
+    <div class="cols">
+      <div class="copy">
+        <div class="kicker">Computer Vision</div>
+        <h2>Тесты через камеру — <em>без лаборатории</em></h2>
+        <p class="p">Батареи тестов: спринт, CMJ, 5-10-5, змейка. Массовое тестирование группы и динамика в профиле игрока.</p>
+        <ul class="bullets">
+          <li><i></i><div><b>Батареи</b><span>Готовые наборы под задачу и возраст.</span></div></li>
+          <li><i></i><div><b>Объективные метрики</b><span>CV фиксирует показатели со смартфона.</span></div></li>
+          <li><i></i><div><b>Отчёт в контуре школы</b><span>Тренер и родитель видят рост от месяца к месяцу.</span></div></li>
+        </ul>
+        <p class="quote"><strong>Отдельно:</strong> маркетплейс и презентация NeuroTests — в оглавлении сайта.</p>
+      </div>
+      <div class="visual">
+        <img src="assets/screenshots/06-neurotests-batteries.png" alt="Нейротесты">
+        <div class="cap">Нейротесты · батареи</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ROLES -->
+  <article class="spread" id="roles">
+    <div class="page-head"><span>Campus 360</span><span class="num">10 · Роли</span></div>
+    <div class="cols text-only">
+      <div class="kicker">Один контур</div>
+      <h2>Пять ролей — <em>одна система</em></h2>
+      <div class="grid4" style="grid-template-columns:repeat(5,1fr)">
+        <div class="tile"><div class="n">01</div><h3>Директор</h3><p>Выручка, NPS, филиалы, ИИ.</p></div>
+        <div class="tile"><div class="n">02</div><h3>Менеджер</h3><p>Заявки, абонементы, долги.</p></div>
+        <div class="tile"><div class="n">03</div><h3>Тренер</h3><p>Журнал, посещаемость, тесты.</p></div>
+        <div class="tile"><div class="n">04</div><h3>Родитель</h3><p>Отчёты, оплата, расписание.</p></div>
+        <div class="tile"><div class="n">05</div><h3>Ребёнок</h3><p>Достижения и мотивация.</p></div>
+      </div>
+      <p class="quote" style="margin-top:24px"><strong>База</strong> уже включает запуск школы. Расширения — франшиза, бренд, датчики, CV, IP-камеры — по запросу. Тарифы — в короткой презентации.</p>
+    </div>
+  </article>
+
+  <!-- TRUST -->
+  <article class="spread" id="trust">
+    <div class="page-head"><span>Campus 360</span><span class="num">11 · Доверие</span></div>
+    <div class="cols text-only">
+      <div class="kicker">Партнёры</div>
+      <h2>Проверено на академиях <em>и франшизах</em></h2>
+      <div class="grid4">
+        <div class="tile"><h3>Спартак Будущее</h3><p>От первой тренировки до сборной — единая среда.</p></div>
+        <div class="tile"><h3>Спарта</h3><p>Родители видят прогресс, администрация — цифры.</p></div>
+        <div class="tile"><h3>Зобнин Team</h3><p>Конспект и микроцикл — минуты вместо часов.</p></div>
+        <div class="tile"><h3>Академия Кантера</h3><p>Прозрачность изменила удержание и NPS.</p></div>
+      </div>
+      <div class="grid3" style="margin-top:14px">
+        <div class="tile"><h3>Яндекс.Облако / on-prem</h3><p>Облако или ваши серверы. SLA 99.96%.</p></div>
+        <div class="tile"><h3>ФЗ-152 · Group-IB</h3><p>Изоляция данных, аудит, автобэкапы.</p></div>
+        <div class="tile"><h3>Поддержка</h3><p>Онбординг, вики, академия, менеджер.</p></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CONTACTS -->
+  <article class="spread dark-spread" id="contacts">
+    <div class="page-head"><span>Campus 360</span><span class="num">12 · Контакты</span></div>
+    <div class="cols text-only">
+      <div class="kicker">Следующий шаг</div>
+      <h2>Запустим школу <em>за пару недель</em></h2>
+      <p class="p">Пилот CRM — 2–4 недели. 15 минут демо — и станет понятно, подходит ли Campus 360.</p>
+      <div class="contacts">
+        <div class="tile">
+          <h3>Владислав Перескоков</h3>
+          <p>CEO · Manager 360</p>
+          <strong>v.pereskokov@manager360.pro<br>@v_pereskokov<br>+7 985 665-32-05</strong>
+        </div>
+        <div class="tile">
+          <h3>Вадим Малов</h3>
+          <p>Менеджер по внедрению</p>
+          <strong>v.malov@manager360.pro<br>@malov_m360<br>+7 916 343-60-25</strong>
+        </div>
+      </div>
+      <p class="quote" style="margin-top:28px">Тарифы и модули — в файле <strong>campus-360-modules-prices.html</strong> (короткая презентация).</p>
+    </div>
+  </article>
+
+  <p class="foot-note">Campus 360 · продуктовый буклет · листайте вниз · не слайд-дек</p>
+</main>
 </body>
 </html>
