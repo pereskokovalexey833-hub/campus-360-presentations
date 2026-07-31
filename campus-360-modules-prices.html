@@ -147,6 +147,41 @@ h1 em{font-style:normal;color:var(--acc)}
 }
 
 
+.shot-frame{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0a1020;box-shadow:0 18px 50px rgba(0,0,0,.25);position:relative}
+.shot-frame img{width:100%;display:block;object-fit:cover;object-position:top center;max-height:520px}
+.shot-cap{position:absolute;left:12px;bottom:12px;background:rgba(6,10,20,.8);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px}
+.split{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;flex:1;min-height:0;margin-top:20px;position:relative;z-index:2;align-items:stretch}
+@media(max-width:1100px){.split{grid-template-columns:1fr;overflow:auto}}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;position:relative;z-index:2}
+.price-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 16px 14px}
+.price-card .tier{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:8px}
+.price-card .val{font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--acc)}
+.price-card .val small{font-size:13px;font-weight:700;color:var(--ink-3)}
+.dark .price-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.dark .price-card .tier{color:var(--on-2)}
+.mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px;position:relative;z-index:2}
+@media(max-width:1100px){.mod-grid,.price-grid{grid-template-columns:1fr 1fr}}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;position:relative;z-index:2;overflow:auto}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.tcard .fam{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--acc)}
+.tcard h3{font-size:15px;font-weight:800;margin:6px 0 4px;line-height:1.25}
+.tcard p{font-size:12px;color:var(--ink-2);line-height:1.35;font-weight:500}
+.tcard .pr{margin-top:8px;font-weight:800;color:var(--acc);font-size:14px}
+.dark .tcard{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.dark .tcard p{color:var(--on-2)}
+.bat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;position:relative;z-index:2}
+@media(max-width:1100px){.bat-row,.tgrid{grid-template-columns:1fr}}
+.bat-card{border-radius:20px;padding:18px;border:1px solid var(--line);background:var(--card);border-top:4px solid var(--acc)}
+.bat-card h3{margin-top:8px;font-size:17px;font-weight:800}
+.bat-card p{margin-top:6px;font-size:12.5px;color:var(--ink-2);line-height:1.4;font-weight:500}
+.bat-card ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+.bat-card li{font-size:12.5px;color:var(--ink-2);font-weight:500;display:flex;justify-content:space-between;gap:8px}
+.bat-card li b{color:var(--ink);font-weight:700}
+.bat-card .price{margin-top:12px;font-size:22px;font-weight:800;color:var(--acc)}
+.dark .bat-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.dark .bat-card p,.dark .bat-card li{color:var(--on-2)}
+.dark .bat-card li b{color:#fff}
+
 </style>
 </head>
 <body>
@@ -156,59 +191,47 @@ h1 em{font-style:normal;color:var(--acc)}
   <div class="glow" style="right:-18%;bottom:-28%;background:radial-gradient(circle,#EF5B48 0%,transparent 55%);opacity:.32"></div>
   <div class="glow" style="left:-22%;top:-34%;background:radial-gradient(circle,#1672EA 0%,transparent 55%);opacity:.2"></div>
   <div class="dotgrid"></div>
-  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>01 / 06</span></div>
-  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;max-width:920px">
-    <p class="kick">Модули и цены · 2026</p>
-    <h1>Тарифы для школы — <em>честно и прозрачно</em></h1>
-    <p class="lead">Цена за школу по числу учеников, скидка по сети. Базовый продукт уже включает всё для запуска — расширения подключаем по запросу.</p>
-    <div class="cta-chip">от 6 000 ₽ / школа / месяц</div>
-  </div>
-</section>
-
-
-<section class="slide">
-  <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>02 / 06 · База</span></div>
-  <p class="kick" style="margin-top:18px">Что входит</p>
-  <h1>Базовая спецификация — <em>всё для запуска</em></h1>
-  <div class="grid-3">
-    <div class="card">
-      <span class="tag">Тренировки</span>
-      <ul>
-        <li>Журнал и конспекты</li>
-        <li>Посещаемость</li>
-        <li>Опросник самочувствия</li>
-        <li>Календарь занятий</li>
-      </ul>
+  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>01 / 07</span></div>
+  <div class="split" style="align-items:center">
+    <div>
+      <p class="kick">Модули и цены · 2026</p>
+      <h1>Тарифы для школы — <em>честно и прозрачно</em></h1>
+      <p class="lead">Цена за школу по числу учеников. Базовый продукт уже включает всё для запуска — расширения подключаем по запросу.</p>
+      <div class="cta-chip">от 6 000 ₽ / школа / месяц</div>
     </div>
-    <div class="card">
-      <span class="tag">Управление</span>
-      <ul>
-        <li>Кабинет руководителя</li>
-        <li>Учётки всех ролей</li>
-        <li>Метрики и должники</li>
-        <li>Сравнение групп</li>
-      </ul>
-    </div>
-    <div class="card">
-      <span class="tag">Платежи и родители</span>
-      <ul>
-        <li>Кабинет родителя</li>
-        <li>Эквайринг / офлайн-оплаты</li>
-        <li>Тарифы и абонементы</li>
-        <li>Воронка пробных</li>
-      </ul>
+    <div class="shot-frame">
+      <img src="assets/screenshots/01-campus-landing.png" alt="Campus 360">
+      <div class="shot-cap">campus-360 · тарифы на сайте</div>
     </div>
   </div>
 </section>
 
+<section class="slide">
+  <div class="dotgrid"></div>
+  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>02 / 07 · База</span></div>
+  <div class="split">
+    <div>
+      <p class="kick">Что входит</p>
+      <h1>Базовая спецификация — <em>всё для запуска</em></h1>
+      <div class="grid-3" style="grid-template-columns:1fr;margin-top:18px">
+        <div class="card"><span class="tag">Тренировки</span><p style="margin-top:8px">Журнал и конспекты · посещаемость · опросник самочувствия · календарь</p></div>
+        <div class="card"><span class="tag">Управление</span><p style="margin-top:8px">Кабинет руководителя · учётки всех ролей · метрики и должники</p></div>
+        <div class="card"><span class="tag">Платежи и родители</span><p style="margin-top:8px">Кабинет родителя · эквайринг / офлайн · абонементы · воронка</p></div>
+      </div>
+    </div>
+    <div class="shot-frame">
+      <img src="assets/screenshots/03-manager-zayavki.png" alt="Заявки">
+      <div class="shot-cap">CRM · заявки в базовой спецификации</div>
+    </div>
+  </div>
+</section>
 
 <section class="slide">
   <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>03 / 06 · Расширения</span></div>
-  <p class="kick" style="margin-top:18px">Сверх базовой спецификации</p>
+  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>03 / 07 · Расширения</span></div>
+  <p class="kick" style="margin-top:16px">Сверх базовой спецификации</p>
   <h1>Модули <em>по запросу</em></h1>
-  <div class="grid-4" style="margin-top:28px">
+  <div class="mod-grid">
     <div class="card"><h3>Кабинет франшизы</h3><p>Все школы сети в срезах и сравнении.</p></div>
     <div class="card"><h3>NPS и отчёты</h3><p>Лояльность родителей и кастомные дашборды.</p></div>
     <div class="card"><h3>Брендирование</h3><p>Логотип, цвета и иконка клуба в приложении.</p></div>
@@ -220,50 +243,65 @@ h1 em{font-style:normal;color:var(--acc)}
   </div>
 </section>
 
-
 <section class="slide">
   <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>04 / 06 · Тарифы</span></div>
-  <p class="kick" style="margin-top:18px">Тарифная сетка</p>
+  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>04 / 07 · Тарифы</span></div>
+  <p class="kick" style="margin-top:16px">Тарифная сетка</p>
   <h1>Цена за школу — <em>по числу учеников</em></h1>
-  <table class="table">
-    <thead><tr><th>Учеников в школе</th><th>Платёж в месяц</th><th>Ориентир / год</th></tr></thead>
-    <tbody>
-      <tr><td>до 99</td><td class="hi">6 000 ₽</td><td>72 000 ₽</td></tr>
-      <tr><td>100–199</td><td class="hi">10 000 ₽</td><td>120 000 ₽</td></tr>
-      <tr><td>200–299</td><td class="hi">14 000 ₽</td><td>168 000 ₽</td></tr>
-      <tr><td>300–499</td><td class="hi">20 000 ₽</td><td>240 000 ₽</td></tr>
-      <tr><td>500–999</td><td class="hi">30 000 ₽</td><td>360 000 ₽</td></tr>
-      <tr><td>1000+</td><td class="hi">40 000 ₽</td><td>480 000 ₽</td></tr>
-    </tbody>
-  </table>
+  <div class="price-grid">
+    <div class="price-card"><div class="tier">до 99 учеников</div><div class="val">6 000 ₽ <small>/ мес</small></div></div>
+    <div class="price-card"><div class="tier">100–199 учеников</div><div class="val">10 000 ₽ <small>/ мес</small></div></div>
+    <div class="price-card"><div class="tier">200–299 учеников</div><div class="val">14 000 ₽ <small>/ мес</small></div></div>
+    <div class="price-card"><div class="tier">300–499 учеников</div><div class="val">20 000 ₽ <small>/ мес</small></div></div>
+    <div class="price-card"><div class="tier">500–999 учеников</div><div class="val">30 000 ₽ <small>/ мес</small></div></div>
+    <div class="price-card"><div class="tier">1000+ учеников</div><div class="val">40 000 ₽ <small>/ мес</small></div></div>
+  </div>
   <p class="footer-note">Сеть: сумма по школам. От 20 школ / франшиза — индивидуальный оффер.</p>
 </section>
 
-
 <section class="slide">
   <div class="dotgrid"></div>
-  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>05 / 06 · Эффект</span></div>
-  <p class="kick" style="margin-top:18px">Что может стать лучше</p>
+  <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>05 / 07 · Пример сети</span></div>
+  <div class="split">
+    <div>
+      <p class="kick">Расчёт</p>
+      <h1>Пример сети · <em>3 школы</em></h1>
+      <div class="card" style="margin-top:18px">
+        <p>1 × до 99 уч · 6 000 ₽</p>
+        <p style="margin-top:8px">2 × 100–199 уч · 10 000 ₽ × 2</p>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline">
+          <b>Платёж в месяц</b>
+          <span class="price" style="color:var(--acc)">26 000 ₽</span>
+        </div>
+        <p style="margin-top:8px;color:var(--ink-3)">За квартал — 78 000 ₽</p>
+      </div>
+    </div>
+    <div class="shot-frame">
+      <img src="assets/screenshots/07-manager-debtors.png" alt="ERP">
+      <div class="shot-cap">Контроль должников и абонементов</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark">
+  <div class="glow" style="right:-18%;top:-20%;background:radial-gradient(circle,#EF5B48 0%,transparent 55%);opacity:.25"></div>
+  <div class="dotgrid"></div>
+  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>06 / 07 · Эффект</span></div>
+  <p class="kick" style="margin-top:16px">Что может стать лучше</p>
   <h1>Не просто окупается — <em>даёт рост</em></h1>
   <div class="grid-4" style="margin-top:28px">
-    <div class="fact"><b style="font-size:36px;color:#ffb4a8">89%</b><span class="sub">оплаты в срок — напоминания и ссылка</span></div>
-    <div class="fact"><b style="font-size:36px;color:#ffb4a8">+9%</b><span class="sub">средний чек — продления и допродажи</span></div>
-    <div class="fact"><b style="font-size:36px;color:#ffb4a8">62k ₽</b><span class="sub">вернуть в месяц — заявки и долги</span></div>
-    <div class="fact"><b style="font-size:36px;color:#ffb4a8">40k ₽</b><span class="sub">доп. выручка от удержания</span></div>
-  </div>
-  <div class="card" style="margin-top:18px">
-    <h3>Пример сети · 3 школы</h3>
-    <p style="margin-top:8px">1 × до 99 (6 000) + 2 × 100–199 (10 000) = <b style="color:var(--acc)">26 000 ₽ / месяц</b> · 78 000 ₽ / квартал</p>
+    <div class="fact"><b style="font-size:34px;color:#ffb4a8">89%</b><span class="sub">оплаты в срок — напоминания и ссылка</span></div>
+    <div class="fact"><b style="font-size:34px;color:#ffb4a8">+9%</b><span class="sub">средний чек — продления и допродажи</span></div>
+    <div class="fact"><b style="font-size:34px;color:#ffb4a8">62k ₽</b><span class="sub">вернуть в месяц — заявки и долги</span></div>
+    <div class="fact"><b style="font-size:34px;color:#ffb4a8">40k ₽</b><span class="sub">доп. выручка от удержания</span></div>
   </div>
   <p class="footer-note">Ориентир по опыту партнёров — не обещание. Эффект зависит от школы и процессов.</p>
 </section>
 
-
 <section class="slide dark">
   <div class="glow" style="left:50%;top:45%;transform:translate(-50%,-50%);width:70%;height:70%;background:radial-gradient(circle,#EF5B48 0%,transparent 60%);opacity:.2"></div>
   <div class="dotgrid"></div>
-  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>06 / 06 · Контакты</span></div>
+  <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span></span><span>07 / 07 · Контакты</span></div>
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;max-width:900px">
     <p class="kick">Оставить заявку</p>
     <h1>Подберём тариф <em>под вашу школу</em></h1>
@@ -278,27 +316,24 @@ h1 em{font-style:normal;color:var(--acc)}
 
 </div>
 <nav class="deck-nav" aria-label="Навигация">
-  <button id="prev" type="button" aria-label="Назад">‹</button>
+  <button id="prev" type="button">‹</button>
   <span class="idx" id="idx">01 / 01</span>
-  <button id="next" type="button" aria-label="Вперёд">›</button>
+  <button id="next" type="button">›</button>
 </nav>
 
 <script>
 (function(){
   const slides=[...document.querySelectorAll('section.slide')];
-  let i=0;
-  const idx=document.getElementById('idx');
+  let i=0; const idx=document.getElementById('idx');
   function show(n){
     i=(n+slides.length)%slides.length;
     slides.forEach((s,k)=>s.classList.toggle('on',k===i));
-    if(idx) idx.textContent=(i+1).toString().padStart(2,'0')+' / '+slides.length.toString().padStart(2,'0');
-    location.hash = String(i+1);
+    if(idx) idx.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    location.hash=String(i+1);
   }
   window.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1)}
     if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}
-    if(e.key==='Home')show(0);
-    if(e.key==='End')show(slides.length-1);
   });
   document.getElementById('next')?.addEventListener('click',()=>show(i+1));
   document.getElementById('prev')?.addEventListener('click',()=>show(i-1));

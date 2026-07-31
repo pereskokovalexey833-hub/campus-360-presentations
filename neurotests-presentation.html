@@ -147,21 +147,40 @@ h1 em{font-style:normal;color:var(--acc)}
 }
 
 
-.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px;position:relative;z-index:2;overflow:auto}
-.tcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px;min-height:0}
+.shot-frame{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0a1020;box-shadow:0 18px 50px rgba(0,0,0,.25);position:relative}
+.shot-frame img{width:100%;display:block;object-fit:cover;object-position:top center;max-height:520px}
+.shot-cap{position:absolute;left:12px;bottom:12px;background:rgba(6,10,20,.8);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px}
+.split{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;flex:1;min-height:0;margin-top:20px;position:relative;z-index:2;align-items:stretch}
+@media(max-width:1100px){.split{grid-template-columns:1fr;overflow:auto}}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;position:relative;z-index:2}
+.price-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 16px 14px}
+.price-card .tier{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:8px}
+.price-card .val{font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--acc)}
+.price-card .val small{font-size:13px;font-weight:700;color:var(--ink-3)}
+.dark .price-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.dark .price-card .tier{color:var(--on-2)}
+.mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px;position:relative;z-index:2}
+@media(max-width:1100px){.mod-grid,.price-grid{grid-template-columns:1fr 1fr}}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;position:relative;z-index:2;overflow:auto}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
 .tcard .fam{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--acc)}
-.tcard h3{font-size:15px;font-weight:800;margin:6px 0 4px;letter-spacing:-.02em;line-height:1.25}
+.tcard h3{font-size:15px;font-weight:800;margin:6px 0 4px;line-height:1.25}
 .tcard p{font-size:12px;color:var(--ink-2);line-height:1.35;font-weight:500}
 .tcard .pr{margin-top:8px;font-weight:800;color:var(--acc);font-size:14px}
 .dark .tcard{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
 .dark .tcard p{color:var(--on-2)}
-.bat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;position:relative;z-index:2}
-.bat-card{border-radius:20px;padding:18px;border:1px solid var(--line);background:var(--card)}
-.bat-card .tag{background:transparent;border:0;padding:0;color:inherit;font-size:12px}
+.bat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;position:relative;z-index:2}
+@media(max-width:1100px){.bat-row,.tgrid{grid-template-columns:1fr}}
+.bat-card{border-radius:20px;padding:18px;border:1px solid var(--line);background:var(--card);border-top:4px solid var(--acc)}
+.bat-card h3{margin-top:8px;font-size:17px;font-weight:800}
+.bat-card p{margin-top:6px;font-size:12.5px;color:var(--ink-2);line-height:1.4;font-weight:500}
 .bat-card ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
 .bat-card li{font-size:12.5px;color:var(--ink-2);font-weight:500;display:flex;justify-content:space-between;gap:8px}
 .bat-card li b{color:var(--ink);font-weight:700}
 .bat-card .price{margin-top:12px;font-size:22px;font-weight:800;color:var(--acc)}
+.dark .bat-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.dark .bat-card p,.dark .bat-card li{color:var(--on-2)}
+.dark .bat-card li b{color:#fff}
 
 </style>
 </head>
@@ -173,26 +192,31 @@ h1 em{font-style:normal;color:var(--acc)}
   <div class="glow" style="left:-22%;top:-34%;background:radial-gradient(circle,#1672EA 0%,transparent 55%);opacity:.2"></div>
   <div class="dotgrid"></div>
   <div class="meta"><span class="brand-mark">Campus <span class="pill360">360</span> · NeuroTests</span><span>01</span></div>
-  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;max-width:980px">
-    <p class="kick">Маркетплейс CV-тестов · 2026</p>
-    <h1>Нейротесты. Объективная физподготовка <em>со смартфона</em></h1>
-    <p class="lead">25 тестов · 115 параметров · 6 батарей. Без датчиков и лабораторий — компьютерное зрение Manager 360.</p>
-    <div class="cta-chip">Батареи · каталог · цены</div>
+  <div class="split" style="align-items:center">
+    <div>
+      <p class="kick">Маркетплейс CV-тестов · 2026</p>
+      <h1>Нейротесты. Объективная физподготовка <em>со смартфона</em></h1>
+      <p class="lead">25 тестов · 115 параметров · 6 батарей. Без датчиков и лабораторий.</p>
+      <div class="cta-chip">Батареи · каталог · цены</div>
+    </div>
+    <div class="shot-frame">
+      <img src="assets/screenshots/06-neurotests-batteries.png" alt="Нейротесты">
+      <div class="shot-cap">Campus 360 · батареи тестов</div>
+    </div>
   </div>
 </section>
 
 <section class="slide">
   <div class="dotgrid"></div>
   <div class="top"><span class="brand-mark">Campus <span class="pill360">360</span> · NeuroTests</span><span>02 · Батареи</span></div>
-  <p class="kick" style="margin-top:18px">Что такое батарея тестов</p>
+  <p class="kick" style="margin-top:16px">Что такое батарея тестов</p>
   <h1>Комплексный показатель = <em>набор тестов</em></h1>
-  <p class="lead">В спортивной науке test battery — стандартизированный набор упражнений, которые вместе оценивают качество (взрывную силу, скорость, готовность к RTP), а не одну метрику.</p>
-  <div class="grid-3" style="margin-top:28px">
-    <div class="card"><h3>Взрывная сила</h3><p>CMJ + Squat Jump + 10/5 hop + спринт 10 м. Классика power assessment.</p></div>
-    <div class="card"><h3>Скорость и ловкость</h3><p>Ускорение, max speed, 5-10-5 и челнок — атлетизм без мяча.</p></div>
-    <div class="card"><h3>Скрининг / RTP</h3><p>ROM + контроль приседа/выпадов — безопасность и возврат после травмы.</p></div>
+  <p class="lead">Test battery — стандартизированный набор упражнений, которые вместе оценивают качество (взрывную силу, скорость, готовность к RTP), а не одну метрику.</p>
+  <div class="grid-3" style="margin-top:24px">
+    <div class="card"><h3>Взрывная сила</h3><p>CMJ + Squat Jump + 10/5 hop + спринт 10 м.</p></div>
+    <div class="card"><h3>Скорость и ловкость</h3><p>Ускорение, max speed, 5-10-5 и челнок.</p></div>
+    <div class="card"><h3>Скрининг / RTP</h3><p>ROM + контроль приседа/выпадов — безопасность возврата.</p></div>
   </div>
-  <p class="footer-note">Порядок в батарее: от нейро-взрывных задач к более утомляющим силовым — чтобы не смазать результат.</p>
 </section>
 
 <section class="slide">
@@ -201,24 +225,24 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">Готовые батареи</p>
   <h1>Наборы со скидкой <em>под задачу</em></h1>
   <div class="bat-row">
-        <div class="bat-card" style="border-top:4px solid #EF5B48">
+        <div class="bat-card" style="border-top-color:#EF5B48">
           <div style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#EF5B48">Мощность</div>
-          <h3 style="margin-top:8px;font-size:17px;font-weight:800">Взрывная сила · Power Battery</h3>
-          <p style="margin-top:6px;font-size:12.5px;color:var(--ink-2);line-height:1.4;font-weight:500">Классическая батарея explosive power: CMJ + Squat Jump + реактивный 10/5 hop + ускорение 10 м. Комплексный показатель взрывной силы ног.</p>
+          <h3>Взрывная сила · Power Battery</h3>
+          <p>Классическая батарея explosive power: CMJ + Squat Jump + реактивный 10/5 hop + ускорение 10 м. Комплексный показатель взрывной силы ног.</p>
           <ul><li><b>Вертикальный прыжок CMJ</b><span>89 ₽</span></li><li><b>Вертикальный прыжок из приседа (Squat Jump)</b><span>89 ₽</span></li><li><b>10/5 Хоп</b><span>89 ₽</span></li><li><b>Спринт 10м c места</b><span>49 ₽</span></li></ul>
           <div class="price">253 ₽ <span style="font-size:12px;color:var(--ink-3);font-weight:600">· было 316 ₽ · −20%</span></div>
         </div>
-        <div class="bat-card" style="border-top:4px solid #1672EA">
+        <div class="bat-card" style="border-top-color:#1672EA">
           <div style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#1672EA">Атлетизм</div>
-          <h3 style="margin-top:8px;font-size:17px;font-weight:800">Скорость и ловкость</h3>
-          <p style="margin-top:6px;font-size:12.5px;color:var(--ink-2);line-height:1.4;font-weight:500">Ускорение, максимальная скорость и смена направления — батарея для оценки атлетизма без мяча.</p>
+          <h3>Скорость и ловкость</h3>
+          <p>Ускорение, максимальная скорость и смена направления — батарея для оценки атлетизма без мяча.</p>
           <ul><li><b>Спринт 10м c места</b><span>49 ₽</span></li><li><b>Спринт 10м с разгона (оценка макс. скорости)</b><span>49 ₽</span></li><li><b>5-10-5 (лево) тест ловкости</b><span>69 ₽</span></li><li><b>5-10-5 (право) тест ловкости</b><span>69 ₽</span></li><li><b>Челночный бег</b><span>49 ₽</span></li></ul>
           <div class="price">234 ₽ <span style="font-size:12px;color:var(--ink-3);font-weight:600">· было 285 ₽ · −18%</span></div>
         </div>
-        <div class="bat-card" style="border-top:4px solid #1890ff">
+        <div class="bat-card" style="border-top-color:#1890ff">
           <div style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#1890ff">Базовый скрининг</div>
-          <h3 style="margin-top:8px;font-size:17px;font-weight:800">Junior Screening · 8–12 лет</h3>
-          <p style="margin-top:6px;font-size:12.5px;color:var(--ink-2);line-height:1.4;font-weight:500">Мягкая стартовая батарея для детей: подвижность суставов, базовая координация и контроль приседа без перегрузки.</p>
+          <h3>Junior Screening · 8–12 лет</h3>
+          <p>Мягкая стартовая батарея для детей: подвижность суставов, базовая координация и контроль приседа без перегрузки.</p>
           <ul><li><b>Сгибание лодыжки</b><span>49 ₽</span></li><li><b>Внутренняя ротация бедра</b><span>49 ₽</span></li><li><b>Приседания</b><span>99 ₽</span></li><li><b>Лесенка</b><span>49 ₽</span></li></ul>
           <div class="price">197 ₽ <span style="font-size:12px;color:var(--ink-3);font-weight:600">· было 246 ₽ · −20%</span></div>
         </div></div>
@@ -230,24 +254,24 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">Готовые батареи</p>
   <h1>Наборы со скидкой <em>под задачу</em></h1>
   <div class="bat-row">
-        <div class="bat-card" style="border-top:4px solid #52c41a">
+        <div class="bat-card" style="border-top-color:#52c41a">
           <div style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#52c41a">Развитие</div>
-          <h3 style="margin-top:8px;font-size:17px;font-weight:800">Academy · Футбол 13–16 лет</h3>
-          <p style="margin-top:6px;font-size:12.5px;color:var(--ink-2);line-height:1.4;font-weight:500">Скорость, ловкость со сменой направления, дриблинг и взрывная сила — ключевые качества академического возраста.</p>
+          <h3>Academy · Футбол 13–16 лет</h3>
+          <p>Скорость, ловкость со сменой направления, дриблинг и взрывная сила — ключевые качества академического возраста.</p>
           <ul><li><b>Спринт 10м c места</b><span>49 ₽</span></li><li><b>5-10-5 (лево) тест ловкости</b><span>69 ₽</span></li><li><b>5-10-5 (право) тест ловкости</b><span>69 ₽</span></li><li><b>Змейка с мячом</b><span>59 ₽</span></li><li><b>Вертикальный прыжок CMJ</b><span>89 ₽</span></li></ul>
           <div class="price">275 ₽ <span style="font-size:12px;color:var(--ink-3);font-weight:600">· было 335 ₽ · −18%</span></div>
         </div>
-        <div class="bat-card" style="border-top:4px solid #9254de">
+        <div class="bat-card" style="border-top-color:#9254de">
           <div style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#9254de">Полная оценка</div>
-          <h3 style="margin-top:8px;font-size:17px;font-weight:800">Pro · Pre-season</h3>
-          <p style="margin-top:6px;font-size:12.5px;color:var(--ink-2);line-height:1.4;font-weight:500">Полный профиль профессионала перед сезоном: спринт, максимальная скорость, мощность, реактивность и биомеханика.</p>
+          <h3>Pro · Pre-season</h3>
+          <p>Полный профиль профессионала перед сезоном: спринт, максимальная скорость, мощность, реактивность и биомеханика.</p>
           <ul><li><b>Спринт 10м с разгона (оценка макс. скорости)</b><span>49 ₽</span></li><li><b>Спринт 10м c места</b><span>49 ₽</span></li><li><b>Вертикальный прыжок CMJ</b><span>89 ₽</span></li><li><b>Вертикальный прыжок из приседа (Squat Jump)</b><span>89 ₽</span></li><li><b>10/5 Хоп</b><span>89 ₽</span></li><li><b>Приседания</b><span>99 ₽</span></li><li><b>Прыжки в стороны</b><span>99 ₽</span></li></ul>
           <div class="price">439 ₽ <span style="font-size:12px;color:var(--ink-3);font-weight:600">· было 563 ₽ · −22%</span></div>
         </div>
-        <div class="bat-card" style="border-top:4px solid #f5222d">
+        <div class="bat-card" style="border-top-color:#f5222d">
           <div style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#f5222d">Реабилитация</div>
-          <h3 style="margin-top:8px;font-size:17px;font-weight:800">Return-to-Play · Возврат после травмы</h3>
-          <p style="margin-top:6px;font-size:12.5px;color:var(--ink-2);line-height:1.4;font-weight:500">Контроль симметрии, стабильности колена и подвижности суставов для безопасного возвращения в игру.</p>
+          <h3>Return-to-Play · Возврат после травмы</h3>
+          <p>Контроль симметрии, стабильности колена и подвижности суставов для безопасного возвращения в игру.</p>
           <ul><li><b>Выпады</b><span>99 ₽</span></li><li><b>"Пистолетик" - приседание на одной ноге</b><span>99 ₽</span></li><li><b>Внутренняя ротация бедра</b><span>49 ₽</span></li><li><b>Внешняя ротация бедра</b><span>49 ₽</span></li><li><b>Сгибание лодыжки</b><span>49 ₽</span></li><li><b>Ротация голени</b><span>49 ₽</span></li></ul>
           <div class="price">315 ₽ <span style="font-size:12px;color:var(--ink-3);font-weight:600">· было 394 ₽ · −20%</span></div>
         </div></div>
@@ -259,24 +283,24 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">🚀 Семейство тестов</p>
   <h1>Прыжковая сила и мощность</h1>
   <div class="tgrid">
-        <div class="tcard">
-          <div class="fam">🚀 Прыжковая сила и мощность</div>
-          <h3>Вертикальный прыжок CMJ</h3>
-          <p>Высота и качество прыжка CMJ (взрывная сила ног)</p>
-          <div class="pr">89 ₽ · 18 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🚀 Прыжковая сила и мощность</div>
-          <h3>Вертикальный прыжок из приседа (Squat Jump)</h3>
-          <p>Прыжок из приседа SJ (концентрическая мощность)</p>
-          <div class="pr">89 ₽ · 18 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🚀 Прыжковая сила и мощность</div>
-          <h3>10/5 Хоп</h3>
-          <p>Реактивная сила и асимметрия ног (10/5 Hop)</p>
-          <div class="pr">89 ₽ · 3 параметров</div>
-        </div></div>
+            <div class="tcard">
+              <div class="fam">🚀 Прыжковая сила и мощность</div>
+              <h3>Вертикальный прыжок CMJ</h3>
+              <p>Высота и качество прыжка CMJ (взрывная сила ног)</p>
+              <div class="pr">89 ₽ · 18 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🚀 Прыжковая сила и мощность</div>
+              <h3>Вертикальный прыжок из приседа (Squat Jump)</h3>
+              <p>Прыжок из приседа SJ (концентрическая мощность)</p>
+              <div class="pr">89 ₽ · 18 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🚀 Прыжковая сила и мощность</div>
+              <h3>10/5 Хоп</h3>
+              <p>Реактивная сила и асимметрия ног (10/5 Hop)</p>
+              <div class="pr">89 ₽ · 3 параметров</div>
+            </div></div>
 </section>
 
 <section class="slide">
@@ -285,18 +309,18 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">⚡ Семейство тестов</p>
   <h1>Скорость и ускорение</h1>
   <div class="tgrid">
-        <div class="tcard">
-          <div class="fam">⚡ Скорость и ускорение</div>
-          <h3>Спринт 10м c места</h3>
-          <p>Стартовая взрывная скорость на 10 м с места</p>
-          <div class="pr">49 ₽ · 2 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">⚡ Скорость и ускорение</div>
-          <h3>Спринт 10м с разгона (оценка макс. скорости)</h3>
-          <p>Максимальная скорость с разгона</p>
-          <div class="pr">49 ₽ · 2 параметров</div>
-        </div></div>
+            <div class="tcard">
+              <div class="fam">⚡ Скорость и ускорение</div>
+              <h3>Спринт 10м c места</h3>
+              <p>Стартовая взрывная скорость на 10 м с места</p>
+              <div class="pr">49 ₽ · 2 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">⚡ Скорость и ускорение</div>
+              <h3>Спринт 10м с разгона (оценка макс. скорости)</h3>
+              <p>Максимальная скорость с разгона</p>
+              <div class="pr">49 ₽ · 2 параметров</div>
+            </div></div>
 </section>
 
 <section class="slide">
@@ -305,30 +329,30 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">🔁 Семейство тестов</p>
   <h1>Ловкость и смена направления</h1>
   <div class="tgrid">
-        <div class="tcard">
-          <div class="fam">🔁 Ловкость и смена направления</div>
-          <h3>Лесенка</h3>
-          <p>Частота и координация работы стоп (лесенка)</p>
-          <div class="pr">49 ₽ · 3 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🔁 Ловкость и смена направления</div>
-          <h3>Челночный бег</h3>
-          <p>Челночный бег: ускорение и торможение</p>
-          <div class="pr">49 ₽ · 6 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🔁 Ловкость и смена направления</div>
-          <h3>5-10-5 (лево) тест ловкости</h3>
-          <p>Тест ловкости 5-10-5 со сменой направления (влево)</p>
-          <div class="pr">69 ₽ · 4 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🔁 Ловкость и смена направления</div>
-          <h3>5-10-5 (право) тест ловкости</h3>
-          <p>Тест ловкости 5-10-5 со сменой направления (вправо)</p>
-          <div class="pr">69 ₽ · 4 параметров</div>
-        </div></div>
+            <div class="tcard">
+              <div class="fam">🔁 Ловкость и смена направления</div>
+              <h3>Лесенка</h3>
+              <p>Частота и координация работы стоп (лесенка)</p>
+              <div class="pr">49 ₽ · 3 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🔁 Ловкость и смена направления</div>
+              <h3>Челночный бег</h3>
+              <p>Челночный бег: ускорение и торможение</p>
+              <div class="pr">49 ₽ · 6 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🔁 Ловкость и смена направления</div>
+              <h3>5-10-5 (лево) тест ловкости</h3>
+              <p>Тест ловкости 5-10-5 со сменой направления (влево)</p>
+              <div class="pr">69 ₽ · 4 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🔁 Ловкость и смена направления</div>
+              <h3>5-10-5 (право) тест ловкости</h3>
+              <p>Тест ловкости 5-10-5 со сменой направления (вправо)</p>
+              <div class="pr">69 ₽ · 4 параметров</div>
+            </div></div>
 </section>
 
 <section class="slide">
@@ -337,30 +361,30 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">🦵 Семейство тестов</p>
   <h1>Биомеханика и риск травм</h1>
   <div class="tgrid">
-        <div class="tcard">
-          <div class="fam">🦵 Биомеханика и риск травм</div>
-          <h3>Приседания</h3>
-          <p>Скрининг приседа: вальгус коленей и смещение таза</p>
-          <div class="pr">99 ₽ · 6 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🦵 Биомеханика и риск травм</div>
-          <h3>Выпады</h3>
-          <p>Выпады: стабильность колена и корпуса</p>
-          <div class="pr">99 ₽ · 4 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🦵 Биомеханика и риск травм</div>
-          <h3>Прыжки в стороны</h3>
-          <p>Боковые прыжки: контроль вальгуса колена</p>
-          <div class="pr">99 ₽ · 2 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🦵 Биомеханика и риск травм</div>
-          <h3>"Пистолетик" - приседание на одной ноге</h3>
-          <p>«Пистолетик»: контроль приседа на одной ноге</p>
-          <div class="pr">99 ₽ · 11 параметров</div>
-        </div></div>
+            <div class="tcard">
+              <div class="fam">🦵 Биомеханика и риск травм</div>
+              <h3>Приседания</h3>
+              <p>Скрининг приседа: вальгус коленей и смещение таза</p>
+              <div class="pr">99 ₽ · 6 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🦵 Биомеханика и риск травм</div>
+              <h3>Выпады</h3>
+              <p>Выпады: стабильность колена и корпуса</p>
+              <div class="pr">99 ₽ · 4 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🦵 Биомеханика и риск травм</div>
+              <h3>Прыжки в стороны</h3>
+              <p>Боковые прыжки: контроль вальгуса колена</p>
+              <div class="pr">99 ₽ · 2 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🦵 Биомеханика и риск травм</div>
+              <h3>"Пистолетик" - приседание на одной ноге</h3>
+              <p>«Пистолетик»: контроль приседа на одной ноге</p>
+              <div class="pr">99 ₽ · 11 параметров</div>
+            </div></div>
 </section>
 
 <section class="slide">
@@ -369,42 +393,42 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">📐 Семейство тестов</p>
   <h1>Подвижность суставов (ROM)</h1>
   <div class="tgrid">
-        <div class="tcard">
-          <div class="fam">📐 Подвижность суставов (ROM)</div>
-          <h3>Внутренняя ротация бедра</h3>
-          <p>Внутренняя ротация бедра (ROM + асимметрия)</p>
-          <div class="pr">49 ₽ · 3 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">📐 Подвижность суставов (ROM)</div>
-          <h3>Внешняя ротация бедра</h3>
-          <p>Внешняя ротация бедра (ROM + асимметрия)</p>
-          <div class="pr">49 ₽ · 5 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">📐 Подвижность суставов (ROM)</div>
-          <h3>Сгибание бедра</h3>
-          <p>Сгибание бедра (Hip flexion ROM)</p>
-          <div class="pr">49 ₽ · 2 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">📐 Подвижность суставов (ROM)</div>
-          <h3>Отведение бедра</h3>
-          <p>Отведение бедра (Hip abduction ROM)</p>
-          <div class="pr">49 ₽ · 2 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">📐 Подвижность суставов (ROM)</div>
-          <h3>Сгибание лодыжки</h3>
-          <p>Тыльное сгибание лодыжки (dorsiflexion)</p>
-          <div class="pr">49 ₽ · 2 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">📐 Подвижность суставов (ROM)</div>
-          <h3>Ротация голени</h3>
-          <p>Ротация голеностопа (ROM + асимметрия)</p>
-          <div class="pr">49 ₽ · 3 параметров</div>
-        </div></div>
+            <div class="tcard">
+              <div class="fam">📐 Подвижность суставов (ROM)</div>
+              <h3>Внутренняя ротация бедра</h3>
+              <p>Внутренняя ротация бедра (ROM + асимметрия)</p>
+              <div class="pr">49 ₽ · 3 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">📐 Подвижность суставов (ROM)</div>
+              <h3>Внешняя ротация бедра</h3>
+              <p>Внешняя ротация бедра (ROM + асимметрия)</p>
+              <div class="pr">49 ₽ · 5 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">📐 Подвижность суставов (ROM)</div>
+              <h3>Сгибание бедра</h3>
+              <p>Сгибание бедра (Hip flexion ROM)</p>
+              <div class="pr">49 ₽ · 2 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">📐 Подвижность суставов (ROM)</div>
+              <h3>Отведение бедра</h3>
+              <p>Отведение бедра (Hip abduction ROM)</p>
+              <div class="pr">49 ₽ · 2 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">📐 Подвижность суставов (ROM)</div>
+              <h3>Сгибание лодыжки</h3>
+              <p>Тыльное сгибание лодыжки (dorsiflexion)</p>
+              <div class="pr">49 ₽ · 2 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">📐 Подвижность суставов (ROM)</div>
+              <h3>Ротация голени</h3>
+              <p>Ротация голеностопа (ROM + асимметрия)</p>
+              <div class="pr">49 ₽ · 3 параметров</div>
+            </div></div>
 </section>
 
 <section class="slide">
@@ -413,12 +437,12 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">📐 Семейство тестов</p>
   <h1>Подвижность суставов (ROM)</h1>
   <div class="tgrid">
-        <div class="tcard">
-          <div class="fam">📐 Подвижность суставов (ROM)</div>
-          <h3>Сгибатель бедра</h3>
-          <p>Тест Томаса: длина сгибателей бедра</p>
-          <div class="pr">49 ₽ · 2 параметров</div>
-        </div></div>
+            <div class="tcard">
+              <div class="fam">📐 Подвижность суставов (ROM)</div>
+              <h3>Сгибатель бедра</h3>
+              <p>Тест Томаса: длина сгибателей бедра</p>
+              <div class="pr">49 ₽ · 2 параметров</div>
+            </div></div>
 </section>
 
 <section class="slide">
@@ -427,36 +451,36 @@ h1 em{font-style:normal;color:var(--acc)}
   <p class="kick" style="margin-top:14px">🎯 Семейство тестов</p>
   <h1>Технические навыки с мячом</h1>
   <div class="tgrid">
-        <div class="tcard">
-          <div class="fam">🎯 Технические навыки с мячом</div>
-          <h3>Змейка с мячом</h3>
-          <p>Ведение мяча змейкой: контроль и скорость дриблинга</p>
-          <div class="pr">59 ₽ · 1 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🎯 Технические навыки с мячом</div>
-          <h3>Челночный бег с мячом</h3>
-          <p>Челночный бег с мячом: скорость + контроль</p>
-          <div class="pr">59 ₽ · 6 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🎯 Технические навыки с мячом</div>
-          <h3>Сила удара</h3>
-          <p>Сила и скорость удара по мячу</p>
-          <div class="pr">69 ₽ · 1 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🎯 Технические навыки с мячом</div>
-          <h3>Змейка с мячом с препятствиями</h3>
-          <p>Дриблинг змейкой с препятствиями</p>
-          <div class="pr">69 ₽ · 1 параметров</div>
-        </div>
-        <div class="tcard">
-          <div class="fam">🎯 Технические навыки с мячом</div>
-          <h3>5-10-5 с мячом</h3>
-          <p>Ловкость 5-10-5 с мячом</p>
-          <div class="pr">79 ₽ · 4 параметров</div>
-        </div></div>
+            <div class="tcard">
+              <div class="fam">🎯 Технические навыки с мячом</div>
+              <h3>Змейка с мячом</h3>
+              <p>Ведение мяча змейкой: контроль и скорость дриблинга</p>
+              <div class="pr">59 ₽ · 1 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🎯 Технические навыки с мячом</div>
+              <h3>Челночный бег с мячом</h3>
+              <p>Челночный бег с мячом: скорость + контроль</p>
+              <div class="pr">59 ₽ · 6 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🎯 Технические навыки с мячом</div>
+              <h3>Сила удара</h3>
+              <p>Сила и скорость удара по мячу</p>
+              <div class="pr">69 ₽ · 1 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🎯 Технические навыки с мячом</div>
+              <h3>Змейка с мячом с препятствиями</h3>
+              <p>Дриблинг змейкой с препятствиями</p>
+              <div class="pr">69 ₽ · 1 параметров</div>
+            </div>
+            <div class="tcard">
+              <div class="fam">🎯 Технические навыки с мячом</div>
+              <h3>5-10-5 с мячом</h3>
+              <p>Ловкость 5-10-5 с мячом</p>
+              <div class="pr">79 ₽ · 4 параметров</div>
+            </div></div>
 </section>
 
 <section class="slide dark">
@@ -469,7 +493,7 @@ h1 em{font-style:normal;color:var(--acc)}
     <p class="lead">Нейротесты подключаются как расширение Campus 360. Отчёт для тренера и родителя — в одном контуре школы.</p>
     <div class="grid-2" style="margin-top:28px">
       <div class="card"><h3>Владислав Перескоков</h3><p style="margin-top:10px">v.pereskokov@manager360.pro<br>@v_pereskokov<br>+7 985 665-32-05</p></div>
-      <div class="card"><h3>Маркетплейс</h3><p style="margin-top:10px">Откройте neurotests-marketplace.html<br>Корзина → заявка на подключение</p></div>
+      <div class="card"><h3>Маркетплейс</h3><p style="margin-top:10px">neurotests-marketplace.html<br>Корзина → заявка на подключение</p></div>
     </div>
   </div>
 </section>
@@ -485,8 +509,12 @@ h1 em{font-style:normal;color:var(--acc)}
 (function(){
   const slides=[...document.querySelectorAll('section.slide')];
   let i=0; const idx=document.getElementById('idx');
-  function show(n){ i=(n+slides.length)%slides.length; slides.forEach((s,k)=>s.classList.toggle('on',k===i));
-    if(idx) idx.textContent=(i+1).toString().padStart(2,'0')+' / '+slides.length.toString().padStart(2,'0'); location.hash=String(i+1); }
+  function show(n){
+    i=(n+slides.length)%slides.length;
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    if(idx) idx.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    location.hash=String(i+1);
+  }
   window.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1)}
     if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1)}
