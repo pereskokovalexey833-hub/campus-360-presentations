@@ -115,8 +115,15 @@ a{color:inherit}
 }
 .bullets b{display:block;font-family:Manrope,sans-serif;font-size:15px;font-weight:800;margin-bottom:3px}
 .bullets span{display:block;color:var(--mut);font-size:13.5px;line-height:1.4;font-weight:500}
-.visual{background:#0B1426;position:relative;min-height:420px}
-.visual img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;min-height:420px}
+.visual{
+  background:#0B1426;position:relative;min-height:420px;
+  display:flex;align-items:center;justify-content:center;padding:20px 16px 48px;
+}
+.visual img{
+  width:100%;height:auto;max-height:480px;object-fit:contain;
+  display:block;border-radius:10px;
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+}
 .visual .cap{
   position:absolute;left:14px;bottom:14px;
   background:rgba(6,10,20,.8);border:1px solid rgba(255,255,255,.12);
